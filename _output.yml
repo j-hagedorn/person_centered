@@ -7,6 +7,9 @@ bookdown::gitbook:
       after: |
         <li><a href="https://github.com/j-hagedorn/person_centered" target="blank">Currently in draft form...</a></li>
     download: ["pdf", "epub"]
+bookdown::tufte_html_book:
+  toc: yes
+  css: toc.css
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
