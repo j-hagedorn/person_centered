@@ -35,51 +35,11 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={A Minimal Book Example},
-  pdfauthor={Yihui Xie},
+  pdftitle={A Person-Centered Framework},
+  pdfauthor={Various authors},
   pdfborder={0 0 0},
   breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
@@ -116,8 +76,8 @@
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 
-\title{A Minimal Book Example}
-\author{Yihui Xie}
+\title{A Person-Centered Framework}
+\author{Various authors}
 \date{2020-03-25}
 
 \begin{document}
@@ -127,121 +87,108 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{prerequisites}{%
-\chapter{Prerequisites}\label{prerequisites}}
+\hypertarget{reason}{%
+\chapter{Reason}\label{reason}}
 
-This is a \emph{sample} book written in \textbf{Markdown}. You can use anything that Pandoc's Markdown supports, e.g., a math equation \(a^2 + b^2 = c^2\).
+Each person's ability to choose a better future and map their journey toward it: this is what person-centered planning enables. In order for services to effectively support a person in this process, they must be provided within the context of a person's goals. Orienting a broad and complex system to keep the person at the center requires a consistent, overarching framework. MDHHS BHDDA is working to support this person-centered orientation with the following strategy:
 
-The \textbf{bookdown} package can be installed from CRAN or Github:
+\textbf{Goal:} To develop \protect\hyperlink{bok}{a common body of knowledge} for person-centered planning,
+mapped to \protect\hyperlink{policy}{relevant policies} and \protect\hyperlink{research}{research},
+which will inform a \protect\hyperlink{curriculum}{shared curriculum}
+and \protect\hyperlink{measure}{measurement framework}
+to support \protect\hyperlink{pcpdca}{improved quality of life} for each person.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"bookdown"}\NormalTok{)}
-\CommentTok{# or the development version}
-\CommentTok{# devtools::install_github("rstudio/bookdown")}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{pcpdca}{%
+\chapter{Person-Centered Planning (Doing, Checking, Acting)}\label{pcpdca}}
 
-Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading \texttt{\#}.
+In this document and in the work under development with MDHHS-BHDDA, the phrase \emph{person-centered planning} is used broadly, to encompass not only the initial planning process but also its implementation, monitoring, and refinement. The need for this definition to extend beyond the PCP meetings and to direct all services and supports is already recognized within state policy, which indicates that:\footnote{MDHHS BHDDA Person-Centered Planning Policy (June 5, 2017), p.~1}
 
-To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): \url{https://yihui.org/tinytex/}.
+\begin{quote}
+\emph{through PCP, a person is engaged in decision-making, problem solving, monitoring progress, and making needed adjustments to goals and supports and services provided in a timely manner.}
+\end{quote}
 
-\hypertarget{intro}{%
-\chapter{Introduction}\label{intro}}
+Since the intent of supports and services is to improve personal quality of life, practitioners can view the PCP process as similar to the \emph{Plan-Do-Check-Act} (PDCA) cycle, which involves each element of the broad scope of PCP defined above. Versions of the PDCA cycle have already been successfully incorporated into the supports and treatment planning process for people with varying conditions and needs, from intellectual and developmental disabilities, to mental illness, to physical health concerns.
 
-You can label chapter and section titles using \texttt{\{\#label\}} after them, e.g., we can reference Chapter \ref{intro}. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \ref{methods}.
+\hypertarget{bok}{%
+\chapter{A Common Body of Knowledge}\label{bok}}
 
-Figures and tables with captions will be placed in \texttt{figure} and \texttt{table} environments, respectively.
+A foundational effort has been working to develop a shared repository of key terms and concepts, their definitions, and how they are related to one another. This common language has the following key features:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{.1}\NormalTok{, }\FloatTok{.1}\NormalTok{))}
-\KeywordTok{plot}\NormalTok{(pressure, }\DataTypeTok{type =} \StringTok{'b'}\NormalTok{, }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\begin{itemize}
+\tightlist
+\item
+  Relates all terminology back to the person, who is at the center
+\item
+  Includes concepts related to the PCP process, as broadly defined above, as well as common attributes for understanding the person\footnote{Note that the body of knowledge is not intended to classify services and supports.}
+\item
+  Promotes consistency in implementation and training, and the scalability of future development
+\item
+  Allows for change; the language can be extended as new concepts are identified.\footnote{This approach also requires that ideas claiming to be new must differentiate themselves from existing terms and concepts.}
+\item
+  Reduces confusion across various policies with inconsistent terminology and scope
+\end{itemize}
 
-\begin{figure}
+\hypertarget{policy}{%
+\chapter{Comprehensive Mapping to Policy}\label{policy}}
 
-{\centering \includegraphics[width=0.8\linewidth]{person_centered_files/figure-latex/nice-fig-1} 
+As with any important idea, person-centered planning has been discussed and debated for decades, leaving a vast body of policy, regulations, guidance, and explanations to sift through. While many of the basic ideas of person-centered planning are simple and commonsense, practitioners are also required to adhere to existing policies. With this in mind, the body of knowledge is being developed:
 
-}
+\begin{itemize}
+\tightlist
+\item
+  Based on a broad scope of relevant state and federal policies identified by MDHHS-BHDDA.
+\item
+  Using natural-language processing techniques to identify and refine core terminology from the text of the identified policies
+\item
+  In a manner that allows MDHHS-BHDDA to identify whether new federal policies would align with the current implementation of PCP
+\end{itemize}
 
-\caption{Here is a nice figure!}\label{fig:nice-fig}
-\end{figure}
+\hypertarget{research}{%
+\chapter{Informed by (and Informing) Research}\label{research}}
 
-Reference a figure by its code chunk label with the \texttt{fig:} prefix, e.g., see Figure \ref{fig:nice-fig}. Similarly, you can reference tables generated from \texttt{knitr::kable()}, e.g., see Table \ref{tab:nice-tab}.
+Some activities related to person-centered planning are addressed in existing research.\footnote{For instance, \emph{goals and planning}, \emph{feedback and monitoring}, and similar activities defined by the \href{https://www.humanbehaviourchange.org/resources/behavioural-science/25/description}{Behaviour Change Intervention Ontology (BCIO)} have related research available.} In these instances, our goal would be to connect-the-dots between research and practice by making this knowledge available. In order to remain aligned with national efforts\footnote{NQF's \href{http://www.qualityforum.org/WorkArea/linkit.aspx?LinkIdentifier=id\&ItemID=91382}{Person-Centered Planning and Practice Project}, references `\emph{a research agenda to advance and promote person-centered planning in LTSS}'} in this area, initial steps would include:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}
-  \KeywordTok{head}\NormalTok{(iris, }\DecValTok{20}\NormalTok{), }\DataTypeTok{caption =} \StringTok{'Here is a nice table!'}\NormalTok{,}
-  \DataTypeTok{booktabs =} \OtherTok{TRUE}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\begin{itemize}
+\tightlist
+\item
+  mapping of person-centered planning concepts to researched interventions, where these exist
+\item
+  use of key concepts from the body of knowledge for literature review and meta-analyses of PCP-related practices, to build a base of best practices and evidence for effectiveness
+\item
+  identification of gaps in existing research knowledge related to PCP
+\end{itemize}
 
-\begin{table}
+\hypertarget{curriculum}{%
+\chapter{Shared Training Curriculum}\label{curriculum}}
 
-\caption{\label{tab:nice-tab}Here is a nice table!}
-\centering
-\begin{tabular}[t]{rrrrl}
-\toprule
-Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
-\midrule
-5.1 & 3.5 & 1.4 & 0.2 & setosa\\
-4.9 & 3.0 & 1.4 & 0.2 & setosa\\
-4.7 & 3.2 & 1.3 & 0.2 & setosa\\
-4.6 & 3.1 & 1.5 & 0.2 & setosa\\
-5.0 & 3.6 & 1.4 & 0.2 & setosa\\
-\addlinespace
-5.4 & 3.9 & 1.7 & 0.4 & setosa\\
-4.6 & 3.4 & 1.4 & 0.3 & setosa\\
-5.0 & 3.4 & 1.5 & 0.2 & setosa\\
-4.4 & 2.9 & 1.4 & 0.2 & setosa\\
-4.9 & 3.1 & 1.5 & 0.1 & setosa\\
-\addlinespace
-5.4 & 3.7 & 1.5 & 0.2 & setosa\\
-4.8 & 3.4 & 1.6 & 0.2 & setosa\\
-4.8 & 3.0 & 1.4 & 0.1 & setosa\\
-4.3 & 3.0 & 1.1 & 0.1 & setosa\\
-5.8 & 4.0 & 1.2 & 0.2 & setosa\\
-\addlinespace
-5.7 & 4.4 & 1.5 & 0.4 & setosa\\
-5.4 & 3.9 & 1.3 & 0.4 & setosa\\
-5.1 & 3.5 & 1.4 & 0.3 & setosa\\
-5.7 & 3.8 & 1.7 & 0.3 & setosa\\
-5.1 & 3.8 & 1.5 & 0.3 & setosa\\
-\bottomrule
-\end{tabular}
-\end{table}
+To translate this common body of knowledge into action, various audiences need to be trained in the core elements of person-centered practice, using the foundational concepts identified and defined above. Work in developing these trainings includes:
 
-You can write citations, too. For example, we are using the \textbf{bookdown} package \citep{R-bookdown} in this sample book, which was built on top of R Markdown and \textbf{knitr} \citep{xie2015}.
+\begin{itemize}
+\tightlist
+\item
+  Identification of key audiences
+\item
+  Evaluation of potential training modalities based on key features
+\item
+  Developing a standard base curriculum as well as specialty topics for specific audiences
+\end{itemize}
 
-\hypertarget{literature}{%
-\chapter{Literature}\label{literature}}
+\hypertarget{measure}{%
+\chapter{Person-Centered Measurement Framework}\label{measure}}
 
-Here is a review of existing methods.
+If the entire system of services and supports is intended to be person-centered, its performance should be measured within a framework that is centered on the person. Since many existing quality measures and data collection systems were not developed with this in mind, it will be important to develop a larger framework within which existing measures can be situated. This allows the system to retain the quality measurement work that has been completed, while acknowledging gaps within that framework which need to be filled.
 
-\hypertarget{methods}{%
-\chapter{Methods}\label{methods}}
+Ongoing work in this area would include:
 
-We describe our methods in this chapter.
-
-\hypertarget{applications}{%
-\chapter{Applications}\label{applications}}
-
-Some \emph{significant} applications are demonstrated in this chapter.
-
-\hypertarget{example-one}{%
-\section{Example one}\label{example-one}}
-
-\hypertarget{example-two}{%
-\section{Example two}\label{example-two}}
-
-\hypertarget{final-words}{%
-\chapter{Final Words}\label{final-words}}
-
-We have finished a nice book.
+\begin{itemize}
+\tightlist
+\item
+  Developing a person-centered measurement framework
+\item
+  Conducting an inventory of available data assets at a state wide level
+\item
+  Classifying existing measurement and data collection efforts (e.g.~HEDIS, BH-TEDS, etc.) within the context of this framework
+\end{itemize}
 
   \bibliography{book.bib,packages.bib}
 

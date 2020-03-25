@@ -6,7 +6,3 @@
 # Bookdown files
 packages.bib
 images/dedication.lyx
-
-# Output files other than text-based
-*.docx
-*.pdf
