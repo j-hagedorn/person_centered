@@ -5,7 +5,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">A Person-Centered Framework</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Currently in draft form</a></li>
+        <li><a href="https://github.com/j-hagedorn/person_centered" target="blank">Currently in draft form...</a></li>
     download: ["pdf", "epub"]
 bookdown::pdf_book:
   includes:
