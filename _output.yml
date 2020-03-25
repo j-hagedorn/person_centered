@@ -6,7 +6,7 @@ bookdown::gitbook:
         <li><a href="./">A Person-Centered Framework</a></li>
       after: |
         <li><a href="https://github.com/j-hagedorn/person_centered" target="blank">Currently in draft form...</a></li>
-    download: ["pdf", "epub"]
+    download: ["pdf", "epub", "docx"]
 bookdown::tufte_html_book:
   toc: yes
   css: toc.css
