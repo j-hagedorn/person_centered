@@ -1,0 +1,14 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# Bookdown files
+_bookdown_files
+_book
+packages.bib
+images/dedication.lyx
+
+# Output files other than text-based
+*.docx
+*.pdf
