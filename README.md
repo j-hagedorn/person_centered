@@ -1,1 +1,3 @@
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "Get Started" at https://bookdown.org/home/about/ for how to compile this example.
+This is a working document outlining the process, sources, and formation of a comprehensive body of knowledge for person-centered planning.
+
+The online version of this documentation can be found [here](https://j-hagedorn.github.io/person_centered/_book/index.html)
