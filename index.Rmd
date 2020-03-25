@@ -1,12 +1,11 @@
 --- 
-title: "A Minimal Book Example"
-author: "Yihui Xie"
+title: "A Person-Centered Framework"
+author: "Various authors"
 date: "`r Sys.Date()`"
 output:
   word_document: default
   pdf_document: default
-description: This is a minimal example of using the bookdown package to write a book.
-  The output format for this example is bookdown::gitbook.
+description: A working document outlining the process, sources, and formation of a comprehensive body of knowledge for person-centered planning.
 documentclass: book
 link-citations: yes
 bibliography:
@@ -16,21 +15,15 @@ site: bookdown::bookdown_site
 biblio-style: apalike
 ---
 
-# Prerequisites
+# Reason
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.
+Each person's ability to choose a better future and map their journey toward it: this is what person-centered planning enables.  In order for services to effectively support a person in this process, they must be provided within the context of a person's goals. Orienting a broad and complex system to keep the person at the center requires a consistent, overarching framework.  MDHHS BHDDA is working to support this person-centered orientation with the following strategy:
 
-The **bookdown** package can be installed from CRAN or Github:
-
-```{r eval=FALSE}
-install.packages("bookdown")
-# or the development version
-# devtools::install_github("rstudio/bookdown")
-```
-
-Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
-
-To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
+**Goal:** To develop [a common body of knowledge](#bok) for person-centered planning,
+mapped to [relevant policies](#policy) and [research](#research),
+which will inform a [shared curriculum](#curriculum)
+and [measurement framework](#measure)
+to support [improved quality of life](#pcpdca) for each person.
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages

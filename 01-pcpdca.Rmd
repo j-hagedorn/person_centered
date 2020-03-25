@@ -1,0 +1,7 @@
+# Person-Centered Planning (Doing, Checking, Acting) {#pcpdca}
+
+In this document and in the work under development with MDHHS-BHDDA, the phrase *person-centered planning* is used broadly, to encompass not only the initial planning process but also its implementation, monitoring, and refinement.  The need for this definition to extend beyond the PCP meetings and to direct all services and supports is already recognized within state policy, which indicates that:^[MDHHS BHDDA Person-Centered Planning Policy (June 5, 2017), p. 1]
+
+> *through PCP, a person is engaged in decision-making, problem solving, monitoring progress, and making needed adjustments to goals and supports and services provided in a timely manner.*
+
+Since the intent of supports and services is to improve personal quality of life, practitioners can view the PCP process as similar to the *Plan-Do-Check-Act* (PDCA) cycle, which involves each element of the broad scope of PCP defined above.  Versions of the PDCA cycle have already been successfully incorporated into the supports and treatment planning process for people with varying conditions and needs, from intellectual and developmental disabilities, to mental illness, to physical health concerns.  

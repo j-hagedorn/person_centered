@@ -1,0 +1,7 @@
+# Comprehensive Mapping to Policy {#policy}
+
+As with any important idea, person-centered planning has been discussed and debated for decades, leaving a vast body of policy, regulations, guidance, and explanations to sift through.  While many of the basic ideas of person-centered planning are simple and commonsense, practitioners are also required to adhere to existing policies. With this in mind, the body of knowledge is being developed:
+
+- Based on a broad scope of relevant state and federal policies identified by MDHHS-BHDDA.
+- Using natural-language processing techniques to identify and refine core terminology from the text of the identified policies
+- In a manner that allows MDHHS-BHDDA to identify whether new federal policies would align with the current implementation of PCP

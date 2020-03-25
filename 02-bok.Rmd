@@ -1,0 +1,9 @@
+# A Common Body of Knowledge {#bok}
+
+A foundational effort has been working to develop a shared repository of key terms and concepts, their definitions, and how they are related to one another.  This common language has the following key features:
+
+- Relates all terminology back to the person, who is at the center
+- Includes concepts related to the PCP process, as broadly defined above, as well as common attributes for understanding the person^[Note that the body of knowledge is not intended to classify services and supports.]
+- Promotes consistency in implementation and training, and the scalability of future development
+- Allows for change; the language can be extended as new concepts are identified.^[This approach also requires that ideas claiming to be new must differentiate themselves from existing terms and concepts.]
+- Reduces confusion across various policies with inconsistent terminology and scope

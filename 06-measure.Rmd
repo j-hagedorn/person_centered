@@ -1,0 +1,9 @@
+# Person-Centered Measurement Framework {#measure}
+
+If the entire system of services and supports is intended to be person-centered, its performance should be measured within a framework that is centered on the person.  Since many existing quality measures and data collection systems were not developed with this in mind, it will be important to develop a larger framework within which existing measures can be situated.  This allows the system to retain the quality measurement work that has been completed, while acknowledging gaps within that framework which need to be filled.
+
+Ongoing work in this area would include:
+
+- Developing a person-centered measurement framework 
+- Conducting an inventory of available data assets at a state wide level
+- Classifying existing measurement and data collection efforts (e.g. HEDIS, BH-TEDS, etc.) within the context of this framework
