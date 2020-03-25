@@ -4,8 +4,6 @@
 .Ruserdata
 
 # Bookdown files
-_bookdown_files
-_book
 packages.bib
 images/dedication.lyx
 
