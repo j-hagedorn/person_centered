@@ -7,5 +7,7 @@
 packages.bib
 images/dedication.lyx
 
+# Data files
 *.feather
 *.xlsx
+*.csv
