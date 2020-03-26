@@ -6,3 +6,6 @@
 # Bookdown files
 packages.bib
 images/dedication.lyx
+
+*.feather
+*.xlsx
