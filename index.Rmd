@@ -16,7 +16,18 @@ biblio-style: apalike
 ---
 
 ```{r setup, echo=FALSE, include=FALSE}
-library(tidyverse)
+library(tidygraph); library(tidyverse); library(tidytext)
+library(topicmodels); library(tm)
+library(cleanNLP); cleanNLP::cnlp_init_udpipe()
+
+#Set global opts
+knitr::opts_chunk$set(echo = FALSE, dpi = 350, message = F, comment = F)
+
+# Load datasets
+corpus <- feather::read_feather("data/corpus.feather")
+pcp_nodes <- readxl::read_excel("data/pcp_concept_map.xlsx",sheet = "nodes")
+pcp_edges <- readxl::read_excel("data/pcp_concept_map.xlsx",sheet = "edges")
+
 ```
 
 # Reason

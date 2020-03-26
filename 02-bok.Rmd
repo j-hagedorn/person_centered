@@ -1,5 +1,9 @@
 # A Common Body of Knowledge {#bok}
 
+```{r echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE, dpi = 350, message = F, comment = F)
+```
+
 A foundational effort has been working to develop a shared repository of key terms and concepts, their definitions, and how they are related to one another.  This common language has the following key features:
 
 - Relates all terminology back to the person, who is at the center
@@ -7,3 +11,212 @@ A foundational effort has been working to develop a shared repository of key ter
 - Promotes consistency in implementation and training, and the scalability of future development
 - Allows for change; the language can be extended as new concepts are identified.^[This approach also requires that ideas claiming to be new must differentiate themselves from existing terms and concepts.]
 - Reduces confusion across various policies with inconsistent terminology and scope
+
+## What is a Body of Knowledge?
+
+> "If you wish to converse... define your terms."
+>
+> --- Voltaire
+
+While person-centered thinking and planning is important enough to be ensconced in policy and regulation, it is also important enough that is should never become rote, and continue to be a part of a living dialogue.  Both dialogue and consistent implementation require a shared language.^[According to Will Durant, this requirement is "the heart and soul of [logic], that every important term... be subjected to strictest scrutiny and definition. It is difficult, and ruthlessly tests the mind; but once done it is half of any task." (cf. *The Story of Philosophy*, New York, Garden City, 1926, p. 67)]  Our purpose here is to identify and define concepts related to person-centered planning by making use of the existing legacy of policy and guidance related to person-centered planning.  This will be done in a way which connects core concepts to both state and federal regulations.  The collection of core concepts will serve as the foundational outline for a body of knowledge; an evolving outline of understanding about person-centered thinking, planning, implementation and monitoring.^[Please note that the current work aims at an initial proof-of-concept, and not as a process ready for automation or scaling.]
+
+## Potential Uses
+
+The potential uses of this body of knowledge include the following:
+
+- *Policy Search*: searching of existing policies in electronic format to allow for identification of requirements related to each key concept
+- *Impact of Policy Changes*: identification of relevant new federal policy requirements to allow for clear understanding of which current policies are related and complicated by the new federal policy
+- *Basis of Curriculum*: serving as the foundation of a standard curriculum to train people receiving services, their families, direct-care team members, supports coordinators, case managers, clinicians, and others about the PCP process.
+- *Monitoring Quality*: allowing for system-level monitoring of the quality of PCP practice, through measurements and/or the use of a best practice review model.^[This could be developed similar to the MI-FAST model, which has been used to review the fidelity to evidence-based practices.]
+- *Promising Practices*: use of key terms for ongoing literature review and meta-analysis of PCP-related practices in the research literature, to build a base of best practices and evidence for effectiveness
+
+## Defining Core Concepts
+
+### Identify Core Concepts
+
+In order to begin compiling relevant policies and guidance related to person-centered planning, we needed to select and define an initial set of core concepts related to person-centered planning.  The 'source of truth' for these concepts was state-level policy in Michigan, since this is the level at which shared dialogue and consistent implementation are sought.
+
+```{r subset_corpus}
+df <-
+  corpus %>%
+  filter(
+    document_abbrev %in% c(
+      "PCP",
+      "Self-D"
+    )
+  ) %>%
+  select(
+    document = document_abbrev, 
+    text, page = page_num, 
+    sentence = location_num
+  ) %>%
+  mutate(
+    text = removeNumbers(text),
+    text = stripWhitespace(text),
+    text = str_replace_all(text,"\\s+"," "),
+    text = str_replace_all(text,"- ",""),
+    # Replace department names with acronyms to avoid count of terms
+    text = str_replace_all(
+      text,
+      regex("MICHIGAN DEPARTMENT OF HEALTH AND HUMAN SERVICES",ignore_case = T),
+      "MDHHS"
+    ),
+    text = str_replace_all(
+      text,
+      regex("BEHAVIORAL HEALTH AND DEVELOPMENTAL DISABILITIES ADMINISTRATION", ignore_case = T),
+      "BHDDA"
+    ),
+    text = str_replace_all(
+      text,
+      regex("Individual Plan of Services|Individual Plan of Service", ignore_case = T),
+      "IPOS"
+    ),
+    text = str_replace_all(
+      text,
+      regex("self determination|self-determination", ignore_case = T),
+      "SD"
+    ),
+    text = str_replace_all(
+      text,regex("community mental health", ignore_case = T),"CMH"
+    ),
+    text = str_replace_all(
+      text, regex("hcbs final rule", ignore_case = T),"HCBSFR"
+    ),
+    text = str_replace_all(
+      text,regex("person centered plan ", ignore_case = T),"IPOS "
+    ),
+    text = str_replace_all(
+      text,regex("person centered planning|person-centered planning", ignore_case = T),"PCP"
+    )
+  ) %>%
+  filter(!str_detect(text,"^\\.$")) %>%
+  filter(str_detect(text,""))
+```
+
+```{r define_synonyms}
+library(fuzzyjoin)
+
+synonym_tbl <- 
+  pcp_nodes %>%
+  mutate(synonyms = paste0(concept_name,"; ",synonyms)) %>%
+  # Unnest synonyms
+  unnest_tokens(syn, synonyms, token = "regex", pattern = ";")  %>%
+  mutate(syn = str_trim(syn)) %>%
+  filter(syn != "na") %>%
+  select(concept_name,syn)
+
+synonyms <- list()
+synonyms$person <- c("person","personal","patient","individual","client","consumer","recipient","beneficiary")
+synonyms$services <- c("service","support","encounter","claim")
+synonyms$connections <- c("circumstances")
+synonyms$goals <- c("goal","hope","desire","want")
+synonyms$decisions <- c("sd","choice","choices","decisions","decision","freedom")
+synonyms$preferences <- c("preference")
+synonyms$strengths <- c("skill","ability","strength")
+synonyms$needs <- c("needs","need","needed","necessary")
+synonyms$decision <- c("choose","choice","choices","decide","decisionmaking","determine")
+synonyms$community <- c("community","neighborhood")
+synonyms$friends <- c("friend","friends")
+synonyms$family <- c("family","families")
+synonyms$outcome <- c("achieve", "accomplish")
+#synonyms$planning <- c("planning","pcp")
+
+```
+
+```{r annotate, results='hide', cache=TRUE}
+pcp_annot <- 
+  df %>% 
+  mutate(doc_id = document) %>%
+  # Collapse each document to a single row
+  group_by(doc_id) %>%
+  summarize(text = paste(text,collapse = " ")) %>%
+  cleanNLP::cnlp_annotate() %>% 
+  .$token 
+
+
+# tst <- 
+#   df %>% 
+#   mutate(doc_id = "pcp") %>%
+#   # Collapse each document to a single row
+#   group_by(doc_id) %>%
+#   summarize(text = paste(text,collapse = " ")) %>%
+#   .$text %>%
+#   spacy_parse(
+#     dependency = T, 
+#     nounphrase = T,
+#     additional_attributes = c("is_oov","sentiment","cluster","tag_"))
+
+```
+
+```{r flag_concepts}
+
+flag_concepts<- function(annot_df){
+  
+  annot_df %>%
+    mutate(lemma = str_to_lower(lemma)) %>%
+  # select(token,lemma,upos) %>%
+  # derive concepts from terms
+  mutate(
+    concept_name = case_when(
+      lemma %in% synonyms$person & upos %in% c("NOUN") ~ "person",
+      lemma %in% synonyms$goals & upos %in% c("NOUN") ~ "goals",
+      lemma %in% synonyms$preferences & upos %in% c("NOUN") ~ "preferences",
+      lemma %in% synonyms$decisions ~ "decisions",
+      lemma %in% synonyms$strengths & upos %in% c("NOUN") ~ "strengths",
+      lemma %in% synonyms$needs & upos %in% c("NOUN","VERB","ADJ") ~ "needs",
+      lemma %in% synonyms$community & upos %in% c("NOUN") ~ "community",
+      lemma %in% synonyms$family & upos %in% c("NOUN") ~ "family",
+      lemma %in% synonyms$friends & upos %in% c("NOUN") ~ "friends",
+      lemma %in% synonyms$services & upos %in% c("NOUN") ~ "services",
+      lemma %in% c("plan") & upos %in% c("VERB") ~ "planning",
+      lemma %in% c("pcp","planning") ~ "planning",
+      lemma %in% c("plan") & upos %in% c("NOUN") ~ "plan",
+      lemma %in% c("ipos") ~ "plan",
+      TRUE ~ NA_character_
+    )
+  )
+  
+}
+
+concepts <- pcp_annot %>% flag_concepts()
+
+
+```
+
+The following method was used to develop this initial set of core concepts:^[For more complete documentation, see the appendix regarding [Detailed Methods](#methods).]
+
+- **Manual review and annotation** of a set of core documents which define person-centered planning in the Michigan Public Behavioral Health System.  These include (a) the [Person-Centered Planning Policy](https://www.michigan.gov/documents/mdhhs/Person_Centered_Planning_Policy_rev._6-17-17_597318_7.pdf), (b) the [Self-Determination Policy and Practice Guideline](https://www.michigan.gov/documents/SelfDeterminationPolicy_70262_7.pdf), and (c) the Michigan Mental Health Code section [330.1712 Individualized written plan of services](http://legislature.mi.gov/doc.aspx?mcl-330-1712).
+- **Identifying synonyms** for core concepts.  For instance, the term *person* was mapped to the similar terms *`r paste(synonyms$person, collapse = ", ")`*.  This is being done for all core concepts in order to flag their occurrence across multiple policies.
+- **Comprehensive annotation** of electronic text data for the policies referenced above, to assure that the most commonly used terms and phrases were included as core concepts.
+
+```{r plot_concept}
+concepts %>%
+  # Remove punctuation, conjunctions, etc.
+  filter(!upos %in% c("PUNCT","DET","CCONJ","ADP","PART","AUX")) %>%
+  group_by_all() %>%
+  summarize(n = n()) %>%
+  filter(!is.na(concept_name)) %>% 
+  group_by(concept_name) %>% 
+  summarize(n = n()) %>% 
+  arrange(desc(n)) %>% 
+  ggplot(aes(x = fct_reorder(concept_name,n), y = n)) +
+  geom_col() +
+  labs(
+    title = "Person-Centered Planning Terms",
+    # subtitle = "Most frequent terms in MDHHS PCP Policy document",
+    x = "Term", y = "Occurrences"
+  ) +
+  coord_flip() +
+  theme_minimal()
+```
+
+**Purposeful Word Choice.**  When we map multiple terms together as a concept, we inevitably need to select a single 'master' term to refer to synonyms and identify their locations across documents with varying authors, terminology, points of view and contexts for implementation. The selection of terms is purposefully opinionated, and attempts to reflect the spirit of person-centered planning defined in the state's policy. For instance, the term 'person' is prefered to various other terms, since these terms tend to view the person from only one vantage point: a participant in an economic exchange, a person requiring help from others, an individual person separated of ties to others.  So, while we need to find instances where these words occur in policy, the body of knowledge also intends to approach those policies with a consistent point of view, informed by a consistent set of principles.
+
+**Characteristics of a Person.**  To put the person at the center of the language used, and to do so in way which promotes simplicity, we needed to bring some of the concepts from policy underneath a broader set of terms.  With the **person** as the starting point, we define each person as having the following features:
+
+- **definition**: a set of characteristics specific to that person, defined by the person and those who know them well.
+- **connections**: the people, places and things which make up the context of a person's life
+- **direction**: what a person intends for their life to become, by imagining a future and making choices to move toward it
+
+Note that these are features of being human for all of us.
+
