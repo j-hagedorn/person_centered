@@ -1,4 +1,10 @@
 base
+methods
+datasets
+utils
+grDevices
+graphics
+stats
 tidyverse
 ggplot2
 tibble
@@ -16,3 +22,4 @@ tm
 cleanNLP
 fuzzyjoin
 ggraph
+grid

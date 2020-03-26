@@ -1,4 +1,5 @@
 base
+tidygraph
 tidyverse
 ggplot2
 tibble
@@ -8,7 +9,6 @@ purrr
 dplyr
 stringr
 forcats
-tidygraph
 tidytext
 topicmodels
 NLP

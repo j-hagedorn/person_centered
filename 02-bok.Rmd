@@ -1,7 +1,7 @@
 # A Common Body of Knowledge {#bok}
 
 ```{r echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE, dpi = 350, message = F, comment = F)
+knitr::opts_chunk$set(echo = FALSE, dpi = 350, message = F, comment = F, warning = F)
 ```
 
 A foundational effort has been working to develop a shared repository of key terms and concepts, their definitions, and how they are related to one another.  This common language has the following key features:
@@ -150,7 +150,7 @@ pcp_annot <-
 
 ```{r flag_concepts}
 
-flag_concepts<- function(annot_df){
+flag_concepts <- function(annot_df){
   
   annot_df %>%
     mutate(lemma = str_to_lower(lemma)) %>%
@@ -220,3 +220,27 @@ concepts %>%
 
 Note that these are features of being human for all of us.
 
+```{r, fig.width=6,fig.height=7, dpi=300}
+library(tidygraph); library(ggraph)
+
+x <- 
+  as_tbl_graph(pcp_edges) %>% 
+  activate(nodes) %>% 
+  left_join(pcp_nodes, by = c("name" = "concept_name")) 
+
+ggraph(x, layout = "dendrogram",circular = T) +
+  geom_edge_elbow(alpha = 0.5, color = "grey") +
+  geom_node_point() +
+  geom_node_text(
+    aes(label = name), 
+    repel = T, nudge_y = 0.01
+  ) +
+  labs(
+    title = "Elements of Person-Centered Planning"
+  ) +
+  theme_graph()
+```
+
+## Define Core Concepts {#define}
+
+Defining core concepts and terms, using policy where possible.
