@@ -2,6 +2,8 @@
 
 If the entire system of services and supports is intended to be person-centered, its performance should be measured within a framework that is centered on the person.  Since many existing quality measures and data collection systems were not developed with this in mind, it will be important to develop a larger framework within which existing measures can be situated.  This allows the system to retain the quality measurement work that has been completed, while acknowledging gaps within that framework which need to be filled.
 
+The framework outlined here attempts to align with and fulfill the promise of current definitions of person-centered planning, as well as with existing and evolving standards in the fields of behavioral health and developmental disability services.  Far from contradicting these standards, it attempts to provide a broader, person-centered context for the development of the system as a whole.
+
 Ongoing work in this area would include:
 
 - Developing a person-centered measurement framework 
@@ -75,3 +77,115 @@ A QoL approach has the following benefits over the approaches mentioned above:
 - *Social Determinants of Health* (SDoH): A vast and growing body of [research](https://www.cdc.gov/socialdeterminants/research/index.htm) indicates that the places and conditions in which we live are intrinsically tied to the quality of our lives and the likelihood of achieving positive outcomes from the supports and services we receive. 
 - *Trauma-Informed Care*: More and more models for service provision, informed by research and by the lived experience of trauma survivors, are founded on the recognition that adverse events in our relationships and in our lived environment can have a profound and lifelong impact on our lives.^[For a recent review of these models, see: [Purtle, J. (2018). Trauma, Violence, & Abuse](https://www.ncbi.nlm.nih.gov/pubmed/30079827).]
 - *Supports Paradigm*: A model, prevalent in the IDD supports system, that views a person's functioning as the match between their individual capacity and the environment in which they are expected to live and work.^[See [Thompson, et al. (2009)](https://www.ncbi.nlm.nih.gov/pubmed/19368481) on conceptualizing support needs.]  In this model, supports are viewed as a way to supplement the persons strengths and to help match those to the person's environment.
+
+## Alignment with Existing Requirements
+
+### Alignment with Federal Medicaid Requirements
+
+
+
+### Alignment with Provider Requirements
+
+*Feasible for Implementation*: Multiple pragmatic trials have demonstrated that the use of symptom scales are both feasible to implement on a large scale^[See the large scale implementations cited in [Fortney, J. C., et al. (2016). A tipping point for measurement-based care. Psychiatric Services, 68(2), 179-188.](https://ps.psychiatryonline.org/doi/full/10.1176/appi.ps.201500439#T1).] and acceptable to people receiving services.^[[Dowrick, C., et al. (2009)](https://www.bmj.com/content/338/bmj.b663.long) report that the use of instruments increase confidence in providers' accuracy and management.]  
+
+*Provider Accreditation*: New standards for Joint Commission accreditation (effective 2018)^[See Joint Commission [*Standard CTS.03.01.09*, sections *EP1-3*](https://www.jointcommission.org/assets/1/6/Approved_BHC_outcome_meas_2018.pdf).] require that an organization (a) "uses a standardized tool or instrument to monitor individuals progress in achieving... goals", (b) "gathers and analyzes data generated through standardized monitoring, and results used to inform goals and objectives of individual's plan", and (c) "evaluates outcomes of... services... by aggregating and analyzing data collected through the standardized monitoring effort."
+
+*Diagnostic Practice*: The most recent diagnostic manual (DSM-5) includes [assessment measures](https://www.psychiatry.org/psychiatrists/practice/dsm/educational-resources/assessment-measures) which were "developed to be administered at the initial patient interview and to monitor treatment progress." 
+
+## Framework for Measurement
+
+### Scope
+
+```{r echo=FALSE, fig.margin = T, fig.cap="Scope of framework", fig.fullwidth=F}
+knitr::include_graphics('_bookdown_files/img/QoL Framework Scope.jpg',dpi = 40)
+```
+
+A conceptual framework as comprehensive as the one we are proposing runs the risk of becoming overwhelmingly complex and unwieldy to implement.  So, before diving into any details, we want to begin by sketching out a simple way to think about the scope of the framework required to systematically measure person-centered planning and its impact of quality of life.  Having a definition of scope can help us answer questions such as: 
+
+- What types of data are included, and what types of measures?  
+- How will we know when the framework is fully implemented?  
+- Does this fit with other work that we are doing?
+
+We can define the scope of the framework using three-dimensions (*[depth](#zoom), [breadth](#pop), and [height](#steps)*) as defined below:
+
+**Depth** (a.k.a. *Zoom*): Does the framework allow for understanding at various levels of 'resolution', from the most immediate (i.e. *the individual person*) to the aggregate (i.e. *the population*) and other levels inbetween (e.g. *the organization, team, etc.*)?
+
+**Breadth** (a.k.a. *Population*): Can the framework apply to all people who are planning to improve their lives with the help of services and supports?^[I.e., to all 'populations' around which systems have been developed (*SMI, SED, IDD, SUD, etc.*).  Since different data exists for each group, evaluating alignment is key.]
+
+**Height** (a.k.a. *Steps*): Does the framework allow for understanding of each of the steps in the [person-centered PDCA process](#pcpdca) discussed above?
+
+```{r echo=FALSE, fig.margin = T, fig.cap="If it was a cube...", fig.fullwidth=F}
+knitr::include_graphics('_bookdown_files/img/QoL Framework Cube.jpg',dpi = 40)
+```
+
+If we think about the framework as a cube made of these three dimensions, then developing the measurement framework can begin by making certain that data is collected:
+
+- at each step of the person-centered PDCA process (*height*) 
+- for people across all populations (*breadth*)
+- which can be aggregated at various levels of the system (*depth*) 
+
+So, speaking *very* broadly, if our cube has data elements/measures at each intersection of the three dimensions, then it allows for at least a basic understanding of people's needs, planning, and services as these contribute to improved lives.  In reality, there will always be additional data that can be collected and novel ways of combining that data, just as there continue to be additional books and songs written describing the human experience.
+
+The next sections define each of the dimensions listed above, and how they relate to one another, in greater detail.  Based on these details, it will be possible to begin a practical gap analysis to assess how closely the system's current data assets match the scope of the framework.  Please note that this paper does not develop or identify specific measures, except as illustrations of how individual data elements or metrics *might* fit into the overall framework.
+
+### Steps {#steps}
+
+#### Plan
+
+**Understand Quality of Life.**
+
+**Understand Needs Related to QoL.** The table below identifies example variables from required assessments which relate to the QoL domains outlined above.^[Assessments included are the [*Supports Intensity Scale (SIS)*](http://aaidd.org/sis), the [*Child and Adolescent Functional Assessment Scale (CAFAS)*](http://www2.fasoutcomes.com/Content.aspx?ContentID=12), the [*Level of Care Utilization System (LOCUS)*](https://cchealth.org/mentalhealth/pdf/LOCUS.pdf), and the [*Global Appraisal of Individual Needs (GAIN)*](http://gaincc.org/)]  While this is not an exhaustive mapping, it shows how the assessment of personal needs (*from the "Plan" step of PDCA*) relate to quality of life domains across multiple populations.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+tribble(
+  ~Dimension,                ~`SIS Subscale`,         ~`CAFAS Item`,     ~`LOCUS Item`, ~`GAIN Item`,
+  #--|--|----
+  "Personal development",    "Health & Safety",       "School/Work",    "",             "",
+  "",                        "Protection/Advocacy",   "Thinking",       "",             "",
+  "",                        "Behavioral Support",    "",               "",             "",
+  "Self-determination",      "Protection/Advocacy",   "",               "Engagement",   "",
+  "Interpersonal relations", "Social Activities",     "Home",           "",             "",
+  "Social inclusion",        "Community Living",      "Community",      "",             "Living Situation",
+  "",                        "Social Activities",     "",               "",             "Environment",
+  "Rights",                  "Protection/Advocacy",   "",               "",             "Legal",
+  "",                        "Health & Safety",       "",               "",             "",
+  "Emotional well-being",    "Behavioral Support",    "Moods/Emotions", "Risk of Harm", "Emotional health",
+  "",                        "Health & Safety",       "Behavior",       "",             "",
+  "Physical well-being",     "Medical Support",       "Self-Harm",      "Co-Morbidity", "Physical health",
+  "",                        "Health & Safety",       "",               "Risk of Harm",             "Disease prevention",
+  "Material well-being",     "Employment",            "Material Needs", "",             "Vocational"
+) %>%
+knitr::kable(caption = 'Sample: Need Assessment and Related QoL Dimensions')
+```
+
+As mentioned above, the table above is intended to illustrate how assessments of need can be tied to QoL domains, but is not comprehensive.^[For the SIS instrument, this table relied on the mapping described in [Van Loon, J., et al. (2010). *Assessing individual support needs to enhance personal outcomes*. Exceptionality, 18(4), 193-202](https://biblio.ugent.be/publication/1169626/file/6748818.pdf).]  The actual mapping will need to be done at the level of specific questions, as opposed to subscales which are not as likely to fit neatly within a single QoL domain.  Note that instruments which contain a larger number of items (such as the SIS) are likely to have greater coverage of QoL domains than instruments with a smaller number of items (such as the LOCUS).
+
+#### Do
+
+#### Check
+
+When are measures taken?
+
+What types of measures relate to what parts of the PCP process?
+
+#### Act
+
+#### PCP-based Episodes
+
+Improvement takes time, both in our personal lives and in our collective work as organizations and systems.  Various frameworks have been developed to help evaluate improvement over time, many of which rely on the concept of "episodes": periods of time which characterized by specific events or attributes.  For instance...
+
+- an admission to treatment is used to define an episode in the *Substance Abuse and Mental Health Services Administration* (SAMHSA) [*Treatment Episode Data Set* (TEDS)](https://www.samhsa.gov/data/data-we-collect/teds-treatment-episode-data-set)
+- the course of a particular illness is used to define an episode in the *National Quality Forum*'s [Patient-Focused Episodes of Care](https://www.qualityforum.org/Publications/2010/01/Measurement_Framework__Evaluating_Efficiency_Across_Patient-Focused_Episodes_of_Care.aspx)
+
+Neither of the approaches above is optimal for understanding the effectiveness of the implementation of a person-centered plan.  The admission-based approach will create longer episodes for long-term services and supports which do not correspond to revisions of the person-centerd plan and the effect of those revisions on quality of life.  The illness-based approach will be overly reductive for people with multiple, concurrent conditions, lifelong conditions, or whose social and environmental conditions have a strong adverse impact on their quality of life.
+
+If the person-centered planning (and doing, checking, acting) process is to be the primary catalyst for improvement of life using Medicaid supports and services, then that process should be used to define episodes for improvement.  The 'episode' of a PCP cycle would correspond to the period of time between the plan and its next subsequent revision.  If person-centered planning is expected to be creative, collaborative, and dynamic, then different 'visions and revisions' of the plan will be longer or shorter.  For instance, if a person develops a plan but soon realizes that it is not helping them to achieve the life goals they intended to, then the plan would be revised and the PCP episode would relatively short.  
+
+
+### Zoom {#zoom}
+
+
+### Population {#pop}
+
+
+

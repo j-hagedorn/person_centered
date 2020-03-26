@@ -23,7 +23,7 @@ library(tidyverse)
  
 This framework comes from a simple starting point: the intent of supports and services is to help each person to flourish, to achieve a better life.
 
-That belief is, thankfully, not a new one.  It aligns with the MDHHS person-centered planning policy, which begins by stating that:^[MDHHS BHDDA Person-Centered Planning Policy (June 5, 2017), p. 1]
+That belief is, thankfully, not a new one.  It aligns with the MDHHS person-centered planning policy[@pcp-policy], which begins by stating that:
 
 > *The purpose of the community mental health system is to support adults and children... to live successfully in their communities — achieving community inclusion and participation, independence, and productivity [and to] to identify and achieve their personal goals.*
 
