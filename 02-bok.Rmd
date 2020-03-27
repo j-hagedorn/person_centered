@@ -185,7 +185,7 @@ concepts <- pcp_annot %>% flag_concepts()
 
 The following method was used to develop this initial set of core concepts:^[For more complete documentation, see the appendix regarding [Detailed Methods](#methods).]
 
-- **Manual review and annotation** of a set of core documents which define person-centered planning in the Michigan Public Behavioral Health System.  These include (a) the [Person-Centered Planning Policy](https://www.michigan.gov/documents/mdhhs/Person_Centered_Planning_Policy_rev._6-17-17_597318_7.pdf), (b) the [Self-Determination Policy and Practice Guideline](https://www.michigan.gov/documents/SelfDeterminationPolicy_70262_7.pdf), and (c) the Michigan Mental Health Code section [330.1712 Individualized written plan of services](http://legislature.mi.gov/doc.aspx?mcl-330-1712).
+- **Manual review and annotation** of a set of core documents which define person-centered planning in the Michigan Public Behavioral Health System.  These include (a) the Person-Centered Planning Policy^[@pcp-policy], (b) the Self-Determination Policy and Practice Guideline^[@sd-policy], and (c) the Michigan Mental Health Code section 330.1712 Individualized written plan of services^[@mi-mhc].
 - **Identifying synonyms** for core concepts.  For instance, the term *person* was mapped to the similar terms *`r paste(synonyms$person, collapse = ", ")`*.  This is being done for all core concepts in order to flag their occurrence across multiple policies.
 - **Comprehensive annotation** of electronic text data for the policies referenced above, to assure that the most commonly used terms and phrases were included as core concepts.
 
