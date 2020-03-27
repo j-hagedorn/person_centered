@@ -1,20 +1,54 @@
-# Person-Centered Planning (Doing, Checking, Acting) {#pcpdca}
+# Person-Centered Planning (...Doing, Checking, Acting) {#pcpdca}
 
-The collective effect of our needs and environments has a profound impact on society, but the primary catalyst for transformation is at the level of the individual person.  This is the profound insight of *person-centered planning* (PCP), which has long been the cornerstone of Michigan policy related to behavioral health services and supports.^[See @mi-mhc.] 
+```{r echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE, dpi = 350, message = F, comment = F, warning = F)
+```
 
-Despite the central position of PCP to the Medicaid services system in Michigan, in practice it has often been relegated to the planning meeting itself and the preparation for that meeting: ensuring inclusion of family and friends, personal involvement, etc.  While the act of developing a plan remains a cornerstone of the process, it is only the first step of what is needed to truly achieve one's goals.^[Part of the focus on the meeting is due to the auditing focus on the plan document: an instance of *what is measured, is addressed*.]
+The collective effect of our needs and environments has a profound impact on society and systems, but the primary catalyst for transformation is at the level of the individual person.  This is the profound insight of *person-centered planning* (PCP), which has long been the cornerstone of Michigan policy related to behavioral health services and supports.^[See @mi-mhc.] 
 
-In this document and in the work under development with MDHHS-BHDDA, the phrase *person-centered planning* is used broadly, to encompass not only the initial planning process but also its implementation, monitoring, and refinement.  The need for this definition to extend beyond the PCP meetings and to direct all services and supports is already recognized within state policy, which indicates that:^[MDHHS BHDDA Person-Centered Planning Policy (June 5, 2017), p. 1]
+While putting forward specific definitions of person-centered planning and its parts will a focus of [later sections of this document](#bok), it is worth noting at the outset that our goal is to adopt a broader scope for person-centered planning than is often seen in practice^[Even though this broader definition does conform to existing policy and guidance].  This is because, despite the central position of PCP to the Medicaid services system in Michigan, its practice has often been relegated to the planning meeting itself and the preparation for that meeting: ensuring inclusion of family and friends, personal involvement, etc.  While the act of developing a plan remains a cornerstone of the process, it is only one step needed to truly achieve one's goals.^[Part of the focus on the meeting is due to the auditing focus on the plan document: an instance of *what is measured, is addressed*.  This should serve as an abiding reminder during the implementation of the framework defined here, that there are unintended consequences to measurement.]
+
+In this document, the phrase *person-centered planning* is used broadly, to encompass not only the initial planning process but also its implementation, monitoring, and refinement.  The extension of this definition beyond the PCP meeting and document into a framework which directs all services and supports is already recognized within state policy^[See @pcp-policy, p. 1], which indicates that:
 
 > *through PCP, a person is engaged in decision-making, problem solving, monitoring progress, and making needed adjustments to goals and supports and services provided in a timely manner.*
 
-Since the intent of supports and services is to improve personal quality of life, practitioners can view the PCP process as similar to the *Plan-Do-Check-Act* (PDCA) cycle, which involves each element of the broad scope of PCP defined above.  Versions of the PDCA cycle have already been successfully incorporated into the supports and treatment planning process for people with varying conditions and needs, from intellectual and developmental disabilities, to mental illness, to physical health concerns.  
+The table below suggests how existing paradigms can be used to augment these policy requirements and be incorporated into our framework: 
 
-If we want to understand whether an individual person's plan is supporting their goals, it is necessary to have a strategy to measure improvement in the person's desired areas of focus.  Such measurement-based approaches have been gaining traction in their use across populations.^[@shalock-changes notes "an increased emphasis on... conducting outcome evaluation... to assess the degree to which personal goals, positive changes, or benefits have been achieved" in IDD planning.]
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
-Framing the intent of supports and services as improving personal quality of life through person-centered planning also creates a natural bridge to using well-tested quality improvement processes at the individual level.  Perhaps the most applicable of these is the *Plan-Do-Check-Act* (PDCA) cycle, which involves each element of the broad scope of PCP defined above.  The PDCA cycle has already been successfully incorporated into the supports and treatment planning process for people with varying conditions and needs, from intellectual and developmental disabilities, to mental illness, to physical health concerns.
+tribble(
+  ~Paradigm, ~`Tells us`,  ~`Relates to`,               ~Answers, 
+  #--|--|----
+  "QoL",     "Why?",       "Vision for a better life",  "What areas of life do I want to focus on?",
+  "COM-B",   "What?",      "Turning vision into plan",  "How will I start to address my goal?",
+  "PDCA",    "How?",       "Making my plan work",      "How is the plan working? How to change?"
+) %>%
+knitr::kable(caption = 'Paradigms related to PCP')
 
-```{r echo=FALSE, fig.margin = T, fig.cap="", fig.width=6}
+```
+
+## Vision for a Better Life (QoL)
+
+
+## Turning Vision into Plan (COM-B)
+
+Visualized in the graphic below:^[Source of image: @comb-pic]
+
+```{r fig.cap='The COM-B Model'}
+knitr::include_graphics('_bookdown_files/img/com-b.png',dpi = 40)
+```
+
+## Making My Plan Work (PDCA)
+
+As the intent of supports and services is to improve personal quality of life, practitioners can view the PCP process as similar to the *Plan-Do-Check-Act* (PDCA) cycle, which involves many elements of the broader scope of PCP referred to above.^[While there are various other rubrics related to learning and improvement, PDCA has been selected here because of its use of 'planning' language, its simplicity, and its familiarity among behavioral healthcare providers and funders.]  Versions of the PDCA cycle have already been successfully incorporated into the supports and treatment planning process for people with varying conditions and needs, from intellectual and developmental disabilities, to mental illness, to physical health concerns.
+
+<!-- Add refs to Arduin, MBC, etc. related to PDCA -->
+
+If we want to understand whether a person's plan is supporting his/her goals, it is necessary to have a strategy to measure improvement in the person's desired areas of focus.  Such measurement-based approaches have been gaining traction in their use across populations and been implemented in a manner which is valued by people receiving services.^[@shalock-changes notes "an increased emphasis on... conducting outcome evaluation... to assess the degree to which personal goals, positive changes, or benefits have been achieved" in IDD planning.]
+
+Framing the intent of supports and services as improving personal quality of life through planning creates a natural bridge to using well-tested quality improvement processes at the individual level.  Rather than assuming that an objective will lead to the desired goal as it is initially written, this approach allows for trying out different approaches and revising them to find what works, in the spirit of continuous quality improevment.
+
+```{r echo=FALSE, fig.margin = T, fig.cap="PDCA cycle applied to PCP process", fig.height=2}
 knitr::include_graphics('_bookdown_files/img/pdca.JPG',dpi = 40)
 ```
 
@@ -37,4 +71,12 @@ knitr::kable(caption = 'Alignment of PDCA and PCP')
 
 ```
 
-While there are various other rubrics related to learning and improvement, PDCA has been selected here because of its use of 'planning' language, its simplicity, and its familiarity among behavioral healthcare providers and funders.  Note that, while the questions above can be tied to various data-points, it is more important that they should be conversational: founded upon an ongoing process of personal striving for improvement.
+<!-- How does COM-B fit in here?  Use specific examples. -->
+
+Note that, while the questions above can be tied to various data-points, it is most important that they should be conversational: founded upon an ongoing process of personal striving for improvement.
+
+<!-- Add conclusion paragraph -->
+
+
+
+

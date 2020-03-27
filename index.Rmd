@@ -32,17 +32,15 @@ pcp_edges <- readxl::read_excel("data/pcp_concept_map.xlsx",sheet = "edges")
 
 # Reason
  
-This framework comes from a simple starting point: the intent of supports and services is to help each person to flourish, to achieve a better life.
+This framework arises from a simple conviction: the intent of supports and services is to help each person flourish, to achieve a better life.
 
-That belief is, thankfully, not a new one.  It aligns with the MDHHS person-centered planning policy[@pcp-policy], which begins by stating that:
+That belief is thankfully not a new one.  It aligns with the person-centered planning policy[@pcp-policy] published by the Michigan Department of Health and Human Services' *Behavioral Health and Developmental Disabilities Administration* (MDHHS-BHDDA), which begins by stating that:
 
 > *The purpose of the community mental health system is to support adults and children... to live successfully in their communities — achieving community inclusion and participation, independence, and productivity [and to] to identify and achieve their personal goals.*
 
 The framework defined below is an attempt to apply these longstanding and fundamental values in a way that allows for consistent definitions, implementation, and evaluation.
 
-## Goal
-
-Each person's ability to choose a better future and map their journey toward it: this is what person-centered planning enables.  In order for services to effectively support a person in this process, they must be provided within the context of a person's goals. Orienting a broad and complex system to keep the person at the center requires a consistent, overarching framework.  MDHHS BHDDA is working to support this person-centered orientation with the following strategy:
+Each person has the ability to choose a better future, to chart a course toward it and strive to reach it: person-centered planning provides a platform to enable this process.  In order for services to effectively support a person in this process, they must be provided within the context of a person's goals. Orienting a broad and complex system to keep the person as its central focus requires a consistent, overarching framework.  MDHHS-BHDDA is working to support this person-centered orientation with the following strategy:
 
 **Goal:** To develop [a common body of knowledge](#bok) for person-centered planning,
 mapped to [relevant policies](#policy) and [research](#research),
