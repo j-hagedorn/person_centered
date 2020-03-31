@@ -2,6 +2,8 @@
 
 If the entire system of services and supports is intended to be person-centered, its performance should be measured within a framework that is centered on the person.  Since many existing quality measures and data collection systems were not developed with this in mind, it will be important to develop a larger framework within which existing measures can be situated.  This allows the system to retain the quality measurement work that has been completed, while acknowledging gaps within that framework which need to be filled.
 
+<!-- What does existing quality measures and data collection systems currently address or focus on? Be sure to identify what is lacking… -->
+
 The framework outlined here attempts to align with and fulfill the promise of current definitions of person-centered planning, as well as with existing and evolving standards in the fields of behavioral health and developmental disability services.  Far from contradicting these standards, it attempts to provide a broader, person-centered context for the development of the system as a whole.
 
 Ongoing work in this area would include:
@@ -139,7 +141,7 @@ The next sections define each of the dimensions listed above, and how they relat
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 tribble(
-  ~Dimension,                ~`SIS Subscale`,         ~`CAFAS Item`,     ~`LOCUS Item`, ~`GAIN Item`,
+  ~Dimension,                ~`SIS Subscale`,         ~`CAFAS Subscale`,     ~`LOCUS Dimension`, ~`GAIN Item`,
   #--|--|----
   "Personal development",    "Health & Safety",       "School/Work",    "",             "",
   "",                        "Protection/Advocacy",   "Thinking",       "",             "",
