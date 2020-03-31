@@ -1,3 +1,40 @@
+--- 
+title: "A Person-Centered Framework"
+author: "Various authors"
+date: "`r Sys.Date()`"
+output:
+  word_document: default
+  pdf_document: default
+description: A working document outlining the process, sources, and formation of a comprehensive body of knowledge for person-centered planning.
+documentclass: book
+link-citations: yes
+bibliography:
+- book.bib
+- packages.bib
+site: bookdown::bookdown_site
+biblio-style: apalike
+---
+
+# Reason
+
+Placeholder
+
+
+
+<!--chapter:end:index.Rmd-->
+
+
+# Person-Centered Planning (...Doing, Checking, Acting) {#pcpdca}
+
+Placeholder
+
+
+## Vision for a Better Life {#qol_intro} 
+## Turning Vision into Plan {#comb_intro}
+## Making My Plan Work {#pdca_intro}
+
+<!--chapter:end:01-pcpdca.Rmd-->
+
 # A Common Body of Knowledge {#bok}
 
 ```{r echo=FALSE}
@@ -284,3 +321,71 @@ pcp_nodes %>%
 
 
 <!-- Output table from concept map -->
+
+<!--chapter:end:02-bok.Rmd-->
+
+
+# Comprehensive Mapping to Policy {#policy}
+
+Placeholder
+
+
+## Identify Scope of Policy
+## Find Occurrence of Concepts in Policy
+
+<!--chapter:end:03-policy.Rmd-->
+
+# Informed by (and Informing) Research {#research}
+
+Some activities related to person-centered planning are addressed in existing research.^[For instance, *goals and planning*, *feedback and monitoring*, and similar activities defined by the [Behaviour Change Intervention Ontology (BCIO)](https://www.humanbehaviourchange.org/resources/behavioural-science/25/description) have related research available.]  In these instances, our goal would be to connect-the-dots between research and practice by making this knowledge available.  In order to remain aligned with national efforts^[NQF's [Person-Centered Planning and Practice Project](http://www.qualityforum.org/WorkArea/linkit.aspx?LinkIdentifier=id&ItemID=91382), references '*a research agenda to advance and promote person-centered planning in LTSS*'] in this area, initial steps would include:
+
+- mapping of person-centered planning concepts to researched interventions, where these exist
+- use of key concepts from the body of knowledge for literature review and meta-analyses of PCP-related practices, to build a base of best practices and evidence for effectiveness
+- identification of gaps in existing research knowledge related to PCP
+
+<!--chapter:end:04-research.Rmd-->
+
+# Shared Training Curriculum {#curriculum}
+
+To translate this common body of knowledge into action, various audiences need to be trained in the core elements of person-centered practice, using the foundational concepts identified and defined above.  Work in developing these trainings includes:
+
+- Identification of key audiences
+- Evaluation of potential training modalities based on key features
+- Developing a standard base curriculum as well as specialty topics for specific audiences
+
+<!--chapter:end:05-curriculum.Rmd-->
+
+
+# Person-Centered Measurement Framework {#measure}
+
+Placeholder
+
+
+## What do we mean by 'a better life'?
+### What makes a good definition?
+### What makes a better life? 
+## Benefits of a QoL Perspective
+### What other frameworks exist?
+### Why is a quality of life framework better than others?
+## Alignment with Existing Requirements
+### Alignment with Federal Medicaid Requirements
+### Alignment with Provider Requirements
+## Framework for Measurement
+### Scope
+### Steps {#steps}
+#### Plan
+#### Do
+#### Check
+#### Act
+#### PCP-based Episodes
+### Zoom {#zoom}
+### Population {#pop}
+
+<!--chapter:end:06-measure.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:07-references.Rmd-->
+
