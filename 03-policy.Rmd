@@ -28,16 +28,77 @@ This is intended to be an initial set of policies and regulations, which can be 
 
 ## Find Occurrence of Concepts in Policy
 
-The core concepts are derived from key policy documents, as defined in [the previous section](#bok), which allows for related terms to be flagged within other policy documents.
+The core concepts are derived from key policy documents, as defined in [the previous section](#bok), which allows for related terms to be flagged within other policy documents.  One of the most challenging issues facing any attempt to give clear, consistent, and comprehensive guidance related to person-centered planning is the large, diverse, and continually evolving set of requirements and guidance.
 
-To do this, we take the annotated version of the regulation and replace words and phrases with their corresponding concepts.  We then reconstitute the original document with these replacements.  As new policies are identified for inclusion, new synonyms for core concepts will need to be identified if new terms are introduced to refer to existing concepts.
+The previous section outlined the process for deriving key concepts from state-level policies and guidelines.  The next step is to identify these concepts when they occur within a much larger set of federal policies.  This will allow for policy specialists to:
 
-<!-- Add section showing map of concepts to federal policies -->
+- suggest necessary refinements to the body of knowledge
+- identify relevant requirements which were previously unknown
+- identify potential discrepancies between policies which address a similar concept
 
-```{r}
+To do this, this analysis maps policy words and phrases with their corresponding concepts.  As new policies are identified for inclusion, new synonyms for core concepts will need to be identified if new terms are introduced to refer to existing concepts.
 
-tst <-
-  concepts %>%
+The plot below shows the number of occurrences^[using log scale to show the less frequently used terms] of core concepts across the entire corpus of policies identified above.  While the frequency of occurrence does not speak to the importance of one concept in relationship to others, it point out the number of uses of the concept in different contexts, underlining the challenge in harmonizing divergent policy language.
+
+```{r policy_annotate, eval=FALSE, include=FALSE}
+policy_annot <- 
+  df %>%
+  # filter(document %in% c("PCP","Self-D")) %>%
+  mutate(doc_id = document) %>%
+  # Collapse each document to a single row
+  group_by(doc_id) %>%
+  summarize(text = paste(text,collapse = " ")) %>%
+  cleanNLP::cnlp_annotate() %>% 
+  .$token 
+
+feather::write_feather(policy_annot,"data/policy_annot.feather")
+```
+
+```{r policy_concept, cache=TRUE}
+policy_annot <- feather::read_feather("data/policy_annot.feather")
+policy_concepts <- policy_annot %>% flag_concepts()
+
+sum_policy <-
+  policy_concepts %>%
+  # Remove punctuation, conjunctions, etc.
+  filter(!upos %in% c("PUNCT","DET","CCONJ","ADP","PART","AUX")) %>%
+  group_by_all() %>%
+  summarize(n = n()) %>%
+  filter(!is.na(concept_name)) %>% 
+  group_by(concept_name,doc_id) %>% 
+  summarize(n = n())
+```
+
+```{r plot_policy_concept, fig.height=7, fig.width=6.5}
+sum_policy %>% 
+  arrange(desc(n)) %>% 
+  ggplot(
+    aes(
+      x = fct_reorder(concept_name,.x = log(n),.fun = sum), 
+      y = log(n),
+      fill = doc_id
+    )
+  ) +
+  geom_col() +
+  labs(
+    title = "Person-Centered Planning Concepts",
+    subtitle = "Most frequent concepts found in all policies",
+    x = "Concept", y = "Occurrences (log)"
+  ) +
+  coord_flip() +
+  # scale_fill_brewer(type = "qual", palette = "Accent") +
+  theme_minimal() + 
+  theme(
+    legend.position = "bottom",legend.title = element_blank(),legend.text = element_text(family = "Arial Narrow")
+  )
+```
+
+<!-- Note caveats and work in progress for concept mapping across federal policies -->
+
+```{r collapsed}
+
+collapsed <- 
+  policy_concepts %>%
   mutate(
     concept_word = if_else(
       is.na(concept_name),
@@ -48,7 +109,42 @@ tst <-
   group_by(doc_id, sid) %>%
   summarize(
     text = paste0(token, collapse = " "),
-    rev_text = paste0(concept_word, collapse = " ")
+    rev_text = paste0(concept_word, collapse = " "),
+    concepts_incl = paste0(concept_name, collapse = ";")
+  ) %>%
+  mutate(
+    concepts_incl = str_replace_all(concepts_incl,"NA;|NA|;NA",""),
+    concepts_incl = str_split(concepts_incl, ";")
   )
 
 ```
+
+```{r}
+x <- "assessment"
+filt <- collapsed %>% filter(map_lgl(concepts_incl, ~ x %in% .))
+```
+
+An example may be helpful in understanding what goes into the chart above.  For instance, the concept of *`r x`* shown in the chart above occurs `r sum_policy %>% filter(concept_name == x) %>% summarize(n = sum(n)) %>% .$n` times across `r sum_policy %>% filter(concept_name == x) %>% summarize(docs = n_distinct(doc_id)) %>% .$docs` separate policy documents.^[The specific policies including this concept are: `r sum_policy %>% filter(concept_name == x) %>% summarize(docs = paste0(doc_id, collapse = ", ")) %>% .$docs`]
+
+The table below shows a sample of the text from some of the policies where this concept is flagged:
+
+```{r}
+
+if("html_document" %in% rmarkdown::all_output_formats(knitr::current_input())[1]){
+  filt %>%
+    filter(doc_id %in% c("AFC-TA","MHCode","HCBS")) %>%
+    select(doc_id,text,sid) %>%
+    DT::datatable()
+} else {
+  filt %>%
+    filter(doc_id %in% c("AFC-TA","MHCode","HCBS")) %>%
+    select(doc_id,text,sid) %>%
+    slice(1:15) %>%
+    knitr::kable()  
+}
+```
+
+<!-- Additional Analyses/Viz -->
+<!-- frequency of terms by doc_id (small multiples) -->
+<!-- which policies have relevant content for specific concepts -->
+<!-- summarize the content for a specific concept across policies -->

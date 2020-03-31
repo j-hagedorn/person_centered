@@ -12,7 +12,7 @@ In this document, the phrase *person-centered planning* is used broadly, to enco
 
 > *through PCP, a person is engaged in decision-making, problem solving, monitoring progress, and making needed adjustments to goals and supports and services provided in a timely manner.*
 
-The table below suggests how existing paradigms can be used to augment these policy requirements and be incorporated into our framework: 
+The table below suggests how existing paradigms can be used to augment these policy requirements and be incorporated into our framework. Here we makes use of paradigms for [Quality of Life](#qol_intro) (QoL), [behavior change](#comb_intro) (*Capability-Opportunity-Motivation-Behavior*, or COM-B), and [continual improvement](#pdca_intro) (*Plan-Do-Check-Act*, or PDCA): 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -27,10 +27,10 @@ knitr::kable(caption = 'Paradigms related to PCP')
 
 ```
 
-## Vision for a Better Life (QoL)
+## Vision for a Better Life {#qol_intro} 
 
 
-## Turning Vision into Plan (COM-B)
+## Turning Vision into Plan {#comb_intro}
 
 Visualized in the graphic below:^[Source of image: @comb-pic]
 
@@ -38,11 +38,11 @@ Visualized in the graphic below:^[Source of image: @comb-pic]
 knitr::include_graphics('_bookdown_files/img/com-b.png',dpi = 40)
 ```
 
-## Making My Plan Work (PDCA)
+## Making My Plan Work {#pdca_intro}
 
 As the intent of supports and services is to improve personal quality of life, practitioners can view the PCP process as similar to the *Plan-Do-Check-Act* (PDCA) cycle, which involves many elements of the broader scope of PCP referred to above.^[While there are various other rubrics related to learning and improvement, PDCA has been selected here because of its use of 'planning' language, its simplicity, and its familiarity among behavioral healthcare providers and funders.]  Versions of the PDCA cycle have already been successfully incorporated into the supports and treatment planning process for people with varying conditions and needs, from intellectual and developmental disabilities, to mental illness, to physical health concerns.
 
-<!-- Add refs to Arduin, MBC, etc. related to PDCA -->
+<!-- Add refs to Arduin, MBC, etc. related to PDCA.  Note from SB: How do you think MBC fits into Person Centered Planning? MBC allows for a more objective measurement of change in symptoms/functioning but does it interfere with “person-centeredness”? -->
 
 If we want to understand whether a person's plan is supporting his/her goals, it is necessary to have a strategy to measure improvement in the person's desired areas of focus.  Such measurement-based approaches have been gaining traction in their use across populations and been implemented in a manner which is valued by people receiving services.^[@shalock-changes notes "an increased emphasis on... conducting outcome evaluation... to assess the degree to which personal goals, positive changes, or benefits have been achieved" in IDD planning.]
 
@@ -61,7 +61,7 @@ tribble(
   #--|--|----
   "*Questions*",   "What is your life like?",     "What are you working on?",    "Is life better?",      "What next?",
   "",              "What do you want to pursue?", "How are supports provided?",  "",                     "How to improve approach?",
-  "",              "What supports do you need?",  "Where do you live/work?",     "",                     "",
+  "",              "What supports do you need?",  "",     "",                     "",
   "*Activities*",  "Identify QoL",                "Work on plan",                "Check QoL",            "Revise plan",
   "",              "Assess needs",                "Coordinate services",         "Reassess needs",       "(Repeat cycle)",
   "",              "Develop plan",                "",                            "",                     "",
@@ -71,7 +71,7 @@ knitr::kable(caption = 'Alignment of PDCA and PCP')
 
 ```
 
-<!-- How does COM-B fit in here?  Use specific examples. -->
+<!-- How does COM-B fit in here?  Use specific examples. Consider expanding this table (or create a separate appendix or tool that includes other questions that can be used to drive this conversation. People sometimes have trouble identifying their goals and desired changes – so we have to have lots of ways of asking the same thing, using language specific to culture, age, etc. Maybe we would just touch on this in the training curriculum. -->
 
 Note that, while the questions above can be tied to various data-points, it is most important that they should be conversational: founded upon an ongoing process of personal striving for improvement.
 
