@@ -238,7 +238,7 @@ ggraph(x, layout = "dendrogram",circular = T) +
   geom_edge_elbow(alpha = 0.5, color = "grey") +
   geom_node_point() +
   geom_node_text(
-    aes(label = name), 
+    aes(label = name), family = "Arial Narrow",
     repel = T, nudge_y = 0.01
   ) +
   labs(
