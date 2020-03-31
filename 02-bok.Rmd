@@ -220,11 +220,11 @@ concepts %>%
 
 To put the person at the center of the language used, and to do so in way which promotes simplicity, we needed to bring some of the concepts from policy underneath a broader set of terms.  With the **person** as the starting point, we define each person as having the following features:
 
-- **definition**: a set of characteristics specific to that person, defined by the person and those who know them well.
+- **description**: a set of characteristics specific to that person, defined by the person and those who know the person well.
 - **connections**: the people, places and things which make up the context of a person's life
 - **direction**: what a person intends for his/her life to become, by imagining a future and making choices to move toward it
 
-Note that these are features of being human for all of us.
+Note that these are features of being human for all of us.  The intent of this framework is to describe attributes of a person which are more broadly human, and not merely focused on illness or disability.  While this framework is intended for implementation with Medicaid public behavioral health recipients, the approach outlined here should apply to any reader: from legislators to clinicians, from administrators and direct-care workers.
 
 ```{r, fig.width=6,fig.height=7, dpi=300}
 library(tidygraph); library(ggraph)
