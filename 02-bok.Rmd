@@ -4,11 +4,11 @@
 knitr::opts_chunk$set(echo = FALSE, dpi = 350, message = F, comment = F, warning = F)
 ```
 
-A foundational step to support consistency is the development of a shared repository of key terms and concepts, their definitions, and how they are related to one another.  This common language has the following key features:
+As a foundation for this effort, MDHHS has begun to develop a shared repository of key terms and concepts, their definitions, and how they are related to one another.  This common language has the following key features:
 
-- Relates all terminology back to the person, who is at the center
+- Relates all terminology back to the person, who drives service delivery
 - Includes concepts related to the PCP process, as broadly defined above, as well as common attributes for understanding the person^[Note that the body of knowledge is not intended to classify services and supports.]
-- Promotes consistency in implementation and training, and the scalability of future development
+- Promotes consistency in implementation and training, and a platform for future development
 - Allows for change; the language can be extended as new concepts are identified.^[This approach also requires that ideas claiming to be new must differentiate themselves from existing terms and concepts.]
 - Reduces confusion across various policies with inconsistent terminology and scope
 
@@ -18,9 +18,9 @@ A foundational step to support consistency is the development of a shared reposi
 >
 > --- Voltaire
 
-While person-centered thinking and planning is important enough to be ensconced in policy and regulation, it is also important enough that is should never become rote, and continue to be a part of a living dialogue.  Dialogue and consistent implementation require a shared language.^[According to Will Durant, this requirement is "the heart and soul of [logic], that every important term... be subjected to strictest scrutiny and definition. It is difficult, and ruthlessly tests the mind; but once done it is half of any task." @durant]  
+Person-centered thinking and planning should never become rote, and continue to be a part of a living dialogue.  Dialogue and consistent implementation require a shared language.^[According to Will Durant, this requirement is "the heart and soul of [logic], that every important term... be subjected to strictest scrutiny and definition. It is difficult, and ruthlessly tests the mind; but once done it is half of any task." @durant]  
 
-Our purpose here is to identify and define concepts related to person-centered planning by making use of the existing legacy of policy and guidance related to person-centered planning.  This is done in a way which connects core concepts to both state and federal regulations.  The collection of core concepts is intended to serve as the foundational outline for a body of knowledge; an evolving outline of understanding about person-centered thinking, planning, implementation and monitoring.^[Please note that the current work aims at an initial proof-of-concept, and not as a process ready for automation or scaling.]
+Our purpose here is to identify and define concepts related to person-centered planning.  This is done in a way which connects core concepts to both state and federal regulations.  This collection of core concepts is intended to serve as an evolving, foundational outline for a body of knowledge; encompassing person-centered thinking, planning, implementation and monitoring.^[Please note that the current work aims at an initial proof-of-concept, and not as a process ready for automation or scaling.]
 
 ## Potential Uses
 
@@ -36,7 +36,7 @@ Potential uses of this body of knowledge include the following:
 
 ### What makes a concept a 'core' concept?
 
-In order to begin compiling relevant policies and guidance related to person-centered planning, we needed to select and define an initial set of core concepts related to person-centered planning.  The 'source of truth' for these concepts was state-level policy in Michigan, since this is the level at which shared dialogue and consistent implementation are sought.
+In order to compile relevant policies and guidance related to person-centered planning, we selected and defined an initial set of core concepts related to person-centered planning.  The 'source of truth' for these concepts was state-level policy in Michigan, since this is the level at which shared dialogue and consistent implementation is sought.
 
 ```{r subset_corpus}
 df <-
@@ -201,13 +201,13 @@ concepts <- pcp_annot %>% flag_concepts()
 
 ```
 
-The following method was used to develop this initial set of core concepts:
+The following methods were used to develop this initial set of core concepts:
 
 <!-- Add appendix regarding detailed methods.  Produce core datasets using appendix scripts (not run) and load output at beginning. -->
 
-- **Manual review and annotation** of a set of core documents which define person-centered planning in the Michigan Public Behavioral Health System.  These include (a) the Person-Centered Planning Policy^[@pcp-policy], (b) the Self-Determination Policy and Practice Guideline^[@sd-policy], and (c) the Michigan Mental Health Code section 330.1712 Individualized written plan of services^[@mi-mhc].
-- **Identifying synonyms** for core concepts.  For instance, the term *person* was mapped to the similar terms *`r paste(synonyms$person, collapse = ", ")`*.  This is being done for all core concepts in order to flag their occurrence across multiple policies.
-- **Comprehensive annotation** of electronic text data for the policies referenced above, to assure that the most commonly used terms and phrases were included as core concepts.
+- **Manual review and annotation** of documents which define person-centered planning in the Michigan Public Behavioral Health System.  These include (a) the Person-Centered Planning Policy^[@pcp-policy], (b) the Self-Determination Policy and Practice Guideline^[@sd-policy], and (c) the Michigan Mental Health Code section 330.1712 Individualized written plan of services^[@mi-mhc].
+- **Identifying synonyms** For instance, the term *person* was mapped to the similar terms *`r paste(synonyms$person, collapse = ", ")`*.  This was done for all core concepts in order to identify their occurrence across multiple policies.
+- **Comprehensive annotation** for the policies referenced above, to assure that the most commonly used terms and phrases were included as core concepts.
 
 ```{r plot_concept, fig.height=5, fig.width=6}
 concepts %>%
@@ -230,15 +230,15 @@ concepts %>%
   theme_minimal() 
 ```
 
-- **Purposeful Word Choice.**  When multiple terms are mapped together to comprise a concept, a single 'master' term must inevitably be selected to refer to various synonyms and identify their locations across documents with varying authors, terminology, points of view and contexts. The selection of terms is purposefully opinionated, and attempts to reflect the spirit of person-centered planning defined in the state's policy. For instance, the term 'person' is prefered to various other terms, since these terms tend to view the person from only one vantage point: a participant in an economic exchange, a person requiring help from others, an individual person separated of ties to others.  So, while we need to find instances where these words occur in policy, the body of knowledge also intends to approach those policies with a consistent point of view, informed by a consistent set of principles.
+- **Purposeful Word Choice.**  We select a distinct, 'master' term to refer to various synonyms across documents. The selection of terms is informed by a consistent set of principles.
 
 ### Characteristics of a Person  
 
-To put the person at the center of the language used, and to do so in way which promotes simplicity, we needed to bring some of the concepts from policy underneath a broader set of terms.  With the **person** as the starting point, we define each person as having the following features:
+To honor the person in the language used, and to do so simply, we define each person as having the following features:
 
-- **description**: a set of characteristics specific to that person, defined by the person and those who know the person well.
+- **description**: a set of characteristics specific to the person, defined by that person and those who know the person well.
 - **connections**: the people, places and things which make up the context of a person's life
-- **direction**: what a person intends for his/her life to become, by imagining a future and making choices to move toward it
+- **direction**: what the person intends for his/her life to become, by imagining a future and making choices to move toward it
 
 Note that these are features of being human for all of us.  The intent of this framework is to describe attributes of a person which are more broadly human, and not merely focused on illness or disability.  While this framework is intended for implementation with Medicaid public behavioral health recipients, the approach outlined here should apply to any reader: from legislators to clinicians, from administrators and direct-care workers.
 

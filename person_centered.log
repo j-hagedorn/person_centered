@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2020.3.12)  31 MAR 2020 18:33
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2020.3.12)  21 APR 2020 09:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -846,15 +846,15 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 6.99925pt on input line 3.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line 3.
-)
+[3])
 \tf@toc=\write4
 \openout4 = `person_centered.toc'.
 
-[3] [4
-
-]
+[4]
 Chapter 1.
-[5] [6
+[5
+
+] [6
 
 ]
 Chapter 2.
@@ -915,38 +915,35 @@ Chapter 3.
 File: person_centered_files/figure-latex/plot_concept-1.pdf Graphic file (type 
 pdf)
 <use person_centered_files/figure-latex/plot_concept-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[15] [16]
+[15]
 File: person_centered_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (ty
 pe pdf)
 <use person_centered_files/figure-latex/unnamed-chunk-8-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[17]
+[16]
 Overfull \hbox (521.0201pt too wide) in paragraph at lines 306--321
  [][] 
  []
 
-[18] [19] [20
-
-]
+[17] [18]
 Chapter 4.
 
 Overfull \hbox (10.28004pt too wide) in paragraph at lines 347--402
  [][] 
  []
 
-[21] [22]
+[19
+
+] [20]
 File: person_centered_files/figure-latex/plot_policy_concept-1.pdf Graphic file
  (type pdf)
 <use person_centered_files/figure-latex/plot_policy_concept-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[23]
+[21]
 Overfull \hbox (3386.59027pt too wide) in paragraph at lines 433--528
 [][] 
  []
@@ -954,90 +951,93 @@ Overfull \hbox (3386.59027pt too wide) in paragraph at lines 433--528
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[24]
+[22]
 Overfull \vbox (15.79971pt too high) has occurred while \output is active []
 
-[25] [26
+[23] [24
 
 ]
 Chapter 5.
-[27] [28
+[25] [26
 
 ]
 Chapter 6.
-[29] [30
+[27] [28
 
 ]
 Chapter 7.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[31]
+[29]
 Overfull \hbox (97.67007pt too wide) in paragraph at lines 614--635
  [][] 
  []
 
-[32]
+[30]
 
 Package hyperref Warning: Suppressing link with empty target on input line 660.
 
 
-[33] [34]
+[31] [32] [33] [34
+
+]
+Chapter 8.
 File: _bookdown_files/img/QoL Framework Scope.jpg Graphic file (type bmp)
 <_bookdown_files/img/QoL Framework Scope.jpg>
 
-Overfull \hbox (388.34343pt too wide) in paragraph at lines 710--710
+Overfull \hbox (388.34343pt too wide) in paragraph at lines 713--713
 [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 24.06757pt on input line 711.
+LaTeX Warning: Float too large for page by 24.06757pt on input line 714.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 718--720
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 721--723
 
  []
 
-[35] [36]
-Underfull \hbox (badness 10000) in paragraph at lines 720--722
+
+Underfull \hbox (badness 10000) in paragraph at lines 723--725
 
  []
 
 File: _bookdown_files/img/QoL Framework Cube.jpg Graphic file (type bmp)
 <_bookdown_files/img/QoL Framework Cube.jpg>
 
-Overfull \hbox (388.34343pt too wide) in paragraph at lines 734--734
+Overfull \hbox (388.34343pt too wide) in paragraph at lines 737--737
 [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 24.06757pt on input line 735.
+LaTeX Warning: Float too large for page by 24.06757pt on input line 738.
 
-[37] [38]
-Overfull \hbox (146.80008pt too wide) in paragraph at lines 767--800
+[36] [37] [38]
+Overfull \hbox (146.80008pt too wide) in paragraph at lines 770--803
  [][] 
  []
 
-[39] (./person_centered.bbl [40])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 842.
-[41
+[39] [40] (./person_centered.bbl [41] [42
 
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 842.
+])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 845.
+[43]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 845.
 (./person_centered.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 842.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 842.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 845.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 845.
 Package rerunfilecheck Info: File `person_centered.out' has not changed.
-(rerunfilecheck)             Checksum: A696D3E0C899F0EDAD74C566AD36D232;3993.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 842.
+(rerunfilecheck)             Checksum: 1B6F943680EA69FFA2533B68295B14AA;4171.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 845.
  ) 
 Here is how much of TeX's memory you used:
- 16770 strings out of 481790
- 301255 string characters out of 5935710
+ 16772 strings out of 481790
+ 301293 string characters out of 5935710
  747540 words of memory out of 5000000
- 33526 multiletter control sequences out of 15000+600000
+ 33528 multiletter control sequences out of 15000+600000
  538821 words of font info for 81 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 52i,8n,115p,1146b,390s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 52i,8n,115p,1146b,388s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on person_centered.pdf (41 pages).
+Output written on person_centered.pdf (43 pages).
