@@ -2,6 +2,6 @@
 
 Some activities related to person-centered planning are addressed in existing research.^[For instance, *goals and planning*, *feedback and monitoring*, and similar activities defined by the [Behaviour Change Intervention Ontology (BCIO)](https://www.humanbehaviourchange.org/resources/behavioural-science/25/description) have related research available.]  In these instances, our goal would be to connect-the-dots between research and practice by making this knowledge available.  In order to remain aligned with national efforts^[NQF's [Person-Centered Planning and Practice Project](http://www.qualityforum.org/WorkArea/linkit.aspx?LinkIdentifier=id&ItemID=91382), references '*a research agenda to advance and promote person-centered planning in LTSS*'] in this area, initial steps would include:
 
-- mapping of person-centered planning concepts to researched interventions, where these exist
-- use of key concepts from the body of knowledge for literature review and meta-analyses of PCP-related practices, to build a base of best practices and evidence for effectiveness
+- mapping of person-centered planning concepts to researched interventions
+- literature review and meta-analyses of PCP-related practices, to build a base of best practices and evidence for effectiveness
 - identification of gaps in existing research knowledge related to PCP

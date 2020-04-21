@@ -1,6 +1,6 @@
 # Comprehensive Mapping to Policy {#policy}
 
-As with any important idea, person-centered planning has been discussed and debated for decades, leaving a vast body of policy, regulations, guidance, and explanations to sift through.  While many of the basic ideas of person-centered planning are simple and commonsense, practitioners are also required to adhere to existing policies. With this in mind, the body of knowledge is being developed:
+As with any important idea, person-centered planning has been discussed and debated for decades, leaving a vast body of policy, regulations, guidance, and explanations to sift through.  While the basic idea of person-centered planning is simple and commonsense, practitioners are also required to adhere to complex existing policies. With this in mind, the body of knowledge is being developed:
 
 - Based on a broad scope of relevant state and federal policies identified by MDHHS-BHDDA.
 - Using natural-language processing techniques to identify and refine core terminology from the text of the identified policies
@@ -8,7 +8,7 @@ As with any important idea, person-centered planning has been discussed and deba
 
 ## Identify Scope of Policy
 
-In collaboration with policy experts at MDHHS-BHDDA, an initial scope for the inclusion of state and federal regulations was identified.  While it is designed to be extendable to include new policies as they are developed, and to allow for sharing and implementation across MDHHS departments if required, this initial set of regulations was used:
+In collaboration with policy experts at MDHHS-BHDDA, we identified this initial set of state and federal regulations:
 
 ```{r}
 
@@ -24,7 +24,7 @@ corpus %>%
 
 ```
 
-This is intended to be an initial set of policies and regulations, which can be extended as necessary.^[For example, using the Federal Register API to [search for policies](https://www.federalregister.gov/documents/search?conditions%5Bagencies%5D%5B%5D=centers-for-medicare-medicaid-services&conditions%5Bagencies%5D%5B%5D=health-and-human-services-department&conditions%5Bagencies%5D%5B%5D=substance-abuse-and-mental-health-services-administration&conditions%5Bterm%5D=person-centered&conditions%5Btype%5D%5B%5D=RULE#) containing the phrase "person-centered" by relevant agencies.]  Additional work will be needed to assure that the most current version of amended policies is used, as this approach is refined.
+This set of policies and regulations can be expanded as necessary.^[For example, using the Federal Register API to [search for policies](https://www.federalregister.gov/documents/search?conditions%5Bagencies%5D%5B%5D=centers-for-medicare-medicaid-services&conditions%5Bagencies%5D%5B%5D=health-and-human-services-department&conditions%5Bagencies%5D%5B%5D=substance-abuse-and-mental-health-services-administration&conditions%5Bterm%5D=person-centered&conditions%5Btype%5D%5B%5D=RULE#) containing the phrase "person-centered" by relevant agencies.]  Additional work will be needed to assure that the most current version of amended policies is used, as this approach is refined.
 
 ## Find Occurrence of Concepts in Policy
 

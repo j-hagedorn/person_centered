@@ -9,5 +9,5 @@ images/dedication.lyx
 
 # Data files
 *.feather
-*.xlsx
+#*.xlsx
 *.csv

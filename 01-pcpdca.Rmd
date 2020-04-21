@@ -4,7 +4,7 @@
 knitr::opts_chunk$set(echo = FALSE, dpi = 350, message = F, comment = F, warning = F)
 ```
 
-The collective effect of our needs and environments has a profound impact on society and systems, but the primary catalyst for transformation is at the level of the individual person.  This is the profound insight of *person-centered planning* (PCP), which has long been the cornerstone of Michigan policy related to behavioral health services and supports.^[See @mi-mhc.] 
+While population health approaches may highlight the collective effect of people's needs and environments, the primary catalyst for transformation is at the level of the individual person.  This is the profound insight of *person-centered planning* (PCP), which has long been the cornerstone of Michigan policy related to behavioral health services and supports.^[See @mi-mhc.] 
 
 While putting forward specific definitions of person-centered planning and its parts will a focus of [later sections of this document](#bok), it is worth noting at the outset that our goal is to adopt a broader scope for person-centered planning than is often seen in practice^[Even though this broader definition does conform to existing policy and guidance].  This is because, despite the central position of PCP to the Medicaid services system in Michigan, its practice has often been relegated to the planning meeting itself and the preparation for that meeting: ensuring inclusion of family and friends, personal involvement, etc.  While the act of developing a plan remains a cornerstone of the process, it is only one step needed to truly achieve one's goals.^[Part of the focus on the meeting is due to the auditing focus on the plan document: an instance of *what is measured, is addressed*.  This should serve as an abiding reminder during the implementation of the framework defined here, that there are unintended consequences to measurement.]
 
@@ -73,7 +73,7 @@ knitr::kable(caption = 'Alignment of PDCA and PCP')
 
 <!-- How does COM-B fit in here?  Use specific examples. Consider expanding this table (or create a separate appendix or tool that includes other questions that can be used to drive this conversation. People sometimes have trouble identifying their goals and desired changes – so we have to have lots of ways of asking the same thing, using language specific to culture, age, etc. Maybe we would just touch on this in the training curriculum. -->
 
-Note that, while the questions above can be tied to various data-points, it is most important that they should be conversational: founded upon an ongoing process of personal striving for improvement.
+Note that, while the questions above can be tied to various data-points^[See the [section on measurement](#measure) for examples of how this might be accomplished.], it is most important that they should be conversational: founded upon an ongoing process of personal striving for improvement.
 
 <!-- Add conclusion paragraph -->
 
