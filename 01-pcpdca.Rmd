@@ -50,7 +50,9 @@ This is where iteration and the improvement cycle come in...
 
 ## Making My Plan Work {#pdca_intro}
 
-As the intent of supports and services is to improve personal quality of life, practitioners can view the PCP process as similar to the *Plan-Do-Check-Act* (PDCA) cycle, which involves many elements of the broader scope of PCP referred to above.^[While there are various other rubrics related to learning and improvement, PDCA has been selected here because of its use of 'planning' language, its simplicity, and its familiarity among behavioral healthcare providers and funders.]  Versions of the PDCA cycle have already been successfully incorporated into the supports and treatment planning process for people with varying conditions and needs, from intellectual and developmental disabilities, to mental illness, to physical health concerns.
+The *Plan-Do-Check-Act* (PDCA) cycle is a simple model for implementing a change and checking to see if it is working.^[While there are various other rubrics related to learning and improvement, PDCA has been selected here because of its use of 'planning' language, its simplicity, and its familiarity among behavioral healthcare providers and funders.]  The *QoL* and *COM-B* frameworks discussed above provide a way to identify goals and design individualized strategies to meet those goals: they fall into the *Plan* phase of the PDCA cycle.  
+
+As the intent of supports and services is to improve personal quality of life, practitioners can view the PCP process as similar to the PDCA cycle, which involves many elements of the broader scope of PCP referred to above.  Versions of the PDCA cycle have already been successfully incorporated into the supports and treatment planning process for people with varying conditions and needs, from intellectual and developmental disabilities, to mental illness, to physical health concerns.
 
 <!-- Add refs to Arduin, MBC, etc. related to PDCA.  Note from SB: How do you think MBC fits into Person Centered Planning? MBC allows for a more objective measurement of change in symptoms/functioning but does it interfere with “person-centeredness”? -->
 
