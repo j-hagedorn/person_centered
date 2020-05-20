@@ -32,11 +32,21 @@ knitr::kable(caption = 'Paradigms related to PCP')
 
 ## Turning Vision into Plan {#comb_intro}
 
+The COM-B model for behavioral change, an acronym for *Capability-Opportunity-Motivation-Behavior* provides a way to conceptualize the facilitators and barriers to changing one's life.  Note that the goals addressed are not limited to "challenging behaviors" or related to medical issues (*e.g. weight loss, or quitting smoking*).  The behavior addressed could be as simple as any broad goal related to quality of life.
+
 Visualized in the graphic below:^[Source of image: @comb-pic]
 
 ```{r fig.cap='The COM-B Model'}
 knitr::include_graphics('_bookdown_files/img/com-b.png',dpi = 40)
 ```
+
+For instance, a person may have a goal to enrich the relationship with his/her parents.  The person's *capability* to enrich that relationship may be strained by previous trauma, difficulty communicating, or other challenges.  Perhaps they would benefit from trauma-focused therapy or simply some coaching and modelling of how to engage in difficult conversations.  If the person's parents live across town, but he/she does not have access to reliable transportation, then there is also the need to create *opportunity* to reach that goal.  This might entail gettig a bus pass, finding other transportation and additionally setting up access to phone calls or other communication platforms (e.g. FaceTime or Skype).  In this case, the person's motivation is already present.  In some other cases, such as nutrition or smoking cessation, there is often an need for *motivation*al assistance as well.  
+
+In the example above, one is thinking through *Capacity*, *Opportunity*, and *Motivation* in order to generate ideas about how to achieve a prioritized goal.  The ideas which are generated (e.g. coaching on difficult conversations, getting a bus pass, etc.) are akin to what have typically been called *objectives* in person-centered planning.  These are the steps that a person wants to pursue in order meet a broader *goal* to improve quality-of-life.  
+
+Note that objectives or supports identified above are not the only ones which could possibly get a person to their goal.  It may actually be the case that writing hand-written notes would be more helpful in getting this particular person to establish a closer relationship with their parents.  This is why a particular set of objectives should be viewed as a personal experiment in improving one's life.  The objectives form a hypothesis, where one is saying that doing a set of activities will facilitate the achievement of a goal. There is no reason to think that a person's first hypothesis will be correct, or even that the hypotheses of loved ones or experts must be correct.
+
+This is where iteration and the improvement cycle come in...
 
 ## Making My Plan Work {#pdca_intro}
 
