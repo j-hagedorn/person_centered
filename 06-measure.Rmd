@@ -4,7 +4,7 @@ If the entire system of services and supports is intended to be person-centered,
 
 <!-- What does existing quality measures and data collection systems currently address or focus on? Be sure to identify what is lacking… -->
 
-The framework outlined here attempts to align with and fulfill the promise of current definitions of person-centered planning, as well as with existing and evolving standards in the fields of behavioral health and developmental disability services.  Far from contradicting these standards, it attempts to provide a broader, person-centered context for the development of the system as a whole.
+The measurement framework outlined here attempts to align with and fulfill the promise of current definitions of person-centered planning, as well as with existing and evolving standards in the fields of behavioral health and developmental disability services.  Far from contradicting these standards, it attempts to provide a broader, person-centered context for the development of the system as a whole.
 
 Ongoing work in this area would include:
 
@@ -13,7 +13,7 @@ Ongoing work in this area would include:
 - Classifying existing measurement and data collection efforts (e.g. HEDIS, BH-TEDS, etc.) within the context of this framework
 - Gap analysis of current datasets and development of a plan to address measurement gaps.
 
-## What do we mean by 'a better life'?
+## What do we mean by 'a better life'? {#qol_def}
 
 People have been asking themselves what it means to live a good life for thousands of years,^[The philosopher Aristotle defined the highest good of human life as happiness, or flourishing (*eudaimonia*).  cf. *Nicomachean Ethics*] and it is among the most crucial questions for each of us to answer.  For the purpose of this measurement framework, we will refer to the characteristics that make up a good life as *quality of life*, or QOL for short, relying primarily on contemporary research to arrive at a common and usable definition.
 

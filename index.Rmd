@@ -30,6 +30,8 @@ pcp_edges <- readxl::read_excel("data/pcp_concept_map.xlsx",sheet = "edges")
 
 ```
 
+**This document is currently a work in progress and is not intended for distribution outside of those collaborating on its development with the direction of MDHHS-BHDDA.**
+
 # Reason
  
 This framework arises from a simple conviction: the intent of supports and services is to help each person flourish, to achieve a better life.

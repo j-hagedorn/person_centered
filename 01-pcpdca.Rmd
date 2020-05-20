@@ -4,9 +4,9 @@
 knitr::opts_chunk$set(echo = FALSE, dpi = 350, message = F, comment = F, warning = F)
 ```
 
-While population health approaches may highlight the collective effect of people's needs and environments, the primary catalyst for transformation is at the level of the individual person.  This is the profound insight of *person-centered planning* (PCP), which has long been the cornerstone of Michigan policy related to behavioral health services and supports.^[See @mi-mhc.] 
+Person Centered Planning upholds the truth about healthcare;  while healthcare continues to focus on treating groups and classes of diagnoses, change is ultimately driven by the individual person.   This is the profound insight of *person-centered planning* (PCP), which has long been the cornerstone of Michigan policy related to behavioral health services and supports.^[See @mi-mhc.] 
 
-While putting forward specific definitions of person-centered planning and its parts will a focus of [later sections of this document](#bok), it is worth noting at the outset that our goal is to adopt a broader scope for person-centered planning than is often seen in practice^[Even though this broader definition does conform to existing policy and guidance].  This is because, despite the central position of PCP to the Medicaid services system in Michigan, its practice has often been relegated to the planning meeting itself and the preparation for that meeting: ensuring inclusion of family and friends, personal involvement, etc.  While the act of developing a plan remains a cornerstone of the process, it is only one step needed to truly achieve one's goals.^[Part of the focus on the meeting is due to the auditing focus on the plan document: an instance of *what is measured, is addressed*.  This should serve as an abiding reminder during the implementation of the framework defined here, that there are unintended consequences to measurement.]
+While putting forward specific definitions of person-centered planning and its parts will be a focus of [later sections of this document](#bok), it is worth noting at the outset that our goal is to adopt a broader scope for person-centered planning than is often seen in practice^[Even though this broader definition does conform to existing policy and guidance].  This is because, despite the central position of PCP to policy regarding Medicaid supports and services in Michigan, its practice has often been relegated to the planning meeting itself and the preparation for that meeting: ensuring inclusion of family and friends, personal involvement, etc.  While the act of developing a plan remains a cornerstone of the process, it is only one step needed to truly achieve one's goals.^[Part of the focus on the meeting is due to the auditing focus on the plan document: an instance of *what is measured, is addressed*.  This should serve as an abiding reminder during the implementation of the framework defined here, that there are unintended consequences to measurement.]
 
 In this document, the phrase *person-centered planning* is used broadly, to encompass not only the initial planning process but also its implementation, monitoring, and refinement.  The extension of this definition beyond the PCP meeting and document into a framework which directs all services and supports is already recognized within state policy^[See @pcp-policy, p. 1], which indicates that:
 
@@ -29,8 +29,15 @@ knitr::kable(caption = 'Paradigms related to PCP')
 
 ## Vision for a Better Life {#qol_intro} 
 
+Priorities and choices vary from person to person, yet many dimensions of what makes a good life are broadly agreed upon across people and cultures^[For more detail, see the quality of life definitions [in the measurement discussions](#qol_def) section.]: *choice, relationships, access to needed resources, physical and emotional well-being*... these are some of the dimensions which we collectively refer to as quality of life.
+
+People usually seek services and supports because they see a gap between their current situation and a better life.  Person-centered planning encourages a person to cast a vision for their lives and to identify gaps between their hopes and their current situation.  In order to ensure a comprehensive approach, it is valuable to prompt consideration across all QoL domains in identifying goals. 
 
 ## Turning Vision into Plan {#comb_intro}
+
+Once a person has set a vision for a better life and identified gaps between where they are and where they want to go, a map needs to be drawn.  This map draws potential routes to connect a person from where they are to where they want to be.
+
+The COM-B model for behavioral change, an acronym for *Capability-Opportunity-Motivation-Behavior* provides a way to map out these routes.  It helps to conceptualize the facilitators and barriers to changing one's life.  Note that the goals addressed are not limited to "challenging behaviors" or related to medical issues (*e.g. weight loss, or quitting smoking*).  The behavior addressed could be as simple as any broad goal related to quality of life.
 
 Visualized in the graphic below:^[Source of image: @comb-pic]
 
@@ -38,9 +45,19 @@ Visualized in the graphic below:^[Source of image: @comb-pic]
 knitr::include_graphics('_bookdown_files/img/com-b.png',dpi = 40)
 ```
 
+For instance, a person may have a goal to enrich the relationship with his/her parents.  The person's *capability* to enrich that relationship may be strained by previous trauma, difficulty communicating, or other challenges.  Perhaps they would benefit from trauma-focused therapy or simply some coaching and modelling of how to engage in difficult conversations.  If the person's parents live across town, but he/she does not have access to reliable transportation, then there is also the need to create *opportunity* to reach that goal.  This might entail gettig a bus pass, finding other transportation and additionally setting up access to phone calls or other communication platforms (e.g. FaceTime or Skype).  In this case, the person's motivation is already present.  In some other cases, such as nutrition or smoking cessation, there is often an need for *motivation*al assistance as well.  
+
+In the example above, one is thinking through *Capacity*, *Opportunity*, and *Motivation* in order to generate ideas about how to achieve a prioritized goal.  The ideas which are generated (e.g. coaching on difficult conversations, getting a bus pass, etc.) are akin to what have typically been called *objectives* in person-centered planning.  These are the steps that a person wants to pursue in order meet a broader *goal* to improve quality-of-life.  
+
+Note that objectives or supports identified above are not the only ones which could possibly get a person to their goal.  It may actually be the case that writing hand-written notes would be more helpful in getting this particular person to establish a closer relationship with their parents.  This is why a particular set of objectives should be viewed as a personal experiment in improving one's life.  The objectives form a hypothesis, where one is saying that doing a set of activities will facilitate the achievement of a goal. There is no reason to think that a person's first hypothesis will be correct, or even that the hypotheses of loved ones or experts must be correct.
+
+This is where iteration and the improvement cycle come in...
+
 ## Making My Plan Work {#pdca_intro}
 
-As the intent of supports and services is to improve personal quality of life, practitioners can view the PCP process as similar to the *Plan-Do-Check-Act* (PDCA) cycle, which involves many elements of the broader scope of PCP referred to above.^[While there are various other rubrics related to learning and improvement, PDCA has been selected here because of its use of 'planning' language, its simplicity, and its familiarity among behavioral healthcare providers and funders.]  Versions of the PDCA cycle have already been successfully incorporated into the supports and treatment planning process for people with varying conditions and needs, from intellectual and developmental disabilities, to mental illness, to physical health concerns.
+The *Plan-Do-Check-Act* (PDCA) cycle is a simple model for implementing a change and checking to see if it is working.^[While there are various other rubrics related to learning and improvement, PDCA has been selected here because of its use of 'planning' language, its simplicity, and its familiarity among behavioral healthcare providers and funders.]  The *QoL* and *COM-B* frameworks discussed above provide a way to identify goals and design individualized strategies to meet those goals: they fall into the *Plan* phase of the PDCA cycle.  
+
+As the intent of supports and services is to improve personal quality of life, practitioners can view the PCP process as similar to the PDCA cycle, which involves many elements of the broader scope of PCP referred to above.  Versions of the PDCA cycle have already been successfully incorporated into the supports and treatment planning process for people with varying conditions and needs, from intellectual and developmental disabilities, to mental illness, to physical health concerns.
 
 <!-- Add refs to Arduin, MBC, etc. related to PDCA.  Note from SB: How do you think MBC fits into Person Centered Planning? MBC allows for a more objective measurement of change in symptoms/functioning but does it interfere with “person-centeredness”? -->
 
