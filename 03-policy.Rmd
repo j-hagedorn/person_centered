@@ -70,26 +70,35 @@ sum_policy <-
 ```
 
 ```{r plot_policy_concept, fig.height=7, fig.width=6.5}
+library(scales)
+
 sum_policy %>% 
   arrange(desc(n)) %>% 
   ggplot(
     aes(
       x = fct_reorder(concept_name,.x = log(n),.fun = sum), 
-      y = log(n),
+      y = n,
       fill = doc_id
     )
   ) +
   geom_col() +
+  scale_y_log10(
+    breaks = trans_breaks("log10", function(x) 10^x),
+    labels = trans_format("log10", math_format(10^.x))
+  ) +
   labs(
     title = "Person-Centered Planning Concepts",
     subtitle = "Most frequent concepts found in all policies",
-    x = "Concept", y = "Occurrences (log)"
+    x = "Concept", y = "Occurrences"
   ) +
   coord_flip() +
   # scale_fill_brewer(type = "qual", palette = "Accent") +
   theme_minimal() + 
   theme(
-    legend.position = "bottom",legend.title = element_blank(),legend.text = element_text(family = "Arial Narrow")
+    legend.position = "bottom",
+    legend.title = element_blank(),
+    legend.text = element_text(family = "Arial Narrow"),
+    axis.text.x = element_blank()
   )
 ```
 

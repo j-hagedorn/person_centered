@@ -1,5 +1,6 @@
 --- 
 title: "A Person-Centered Framework"
+subtitle: "Technical Guide for Behavioral Health Providers"
 author: "Various authors"
 date: "`r Sys.Date()`"
 output:
@@ -40,7 +41,7 @@ That belief is thankfully not a new one.  It aligns with the person-centered pla
 
 > *The purpose of the community mental health system is to support adults and children... to live successfully in their communities — achieving community inclusion and participation, independence, and productivity [and to] to identify and achieve their personal goals.*
 
-The framework defined below is an attempt to apply these longstanding and fundamental values in a way that allows for consistent definitions, implementation, and evaluation.
+The framework defined below is an attempt to apply these longstanding and fundamental values in a way that allows for consistent definitions, implementation, and evaluation.   
 
 Each person has the ability to choose a better future, to chart a course toward it and strive to reach it: person-centered planning provides a platform to enable this process.  In order for services to effectively support a person in this process, they must be provided within the context of a person's goals. Orienting a broad and complex system to keep the person as its central focus requires a consistent, overarching framework.  MDHHS-BHDDA is working to support this person-centered orientation with the following strategy:
 
@@ -49,6 +50,8 @@ mapped to [relevant policies](#policy) and [research](#research),
 which will inform a [shared curriculum](#curriculum)
 and [measurement framework](#measure)
 to support [improved quality of life](#pcpdca) for each person.
+
+This document is intended to serve as a scaffolding: a working document feeding multiple system redesign efforts which MDHHS-BHDDA is undertaking.  While it is technical in some parts, this format is intended to assure that no part of the broad scope of PCP is neglected in long-term system design.
 
 
 ```{r include=FALSE}

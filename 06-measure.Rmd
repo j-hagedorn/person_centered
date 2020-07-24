@@ -36,16 +36,16 @@ Below is a potential model listing essential dimensions of QoL:
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 tribble(
-  ~Area,                  ~Dimension,                ~`Example Indicators`,
+  ~`Characteristic`,~Area,                  ~Dimension,                ~`Example Indicators`,
   #--|--|----
-  "Independence",         "Personal development",    "Education status, personal skills, ADLs, IADLs",
-  "            ",         "Self-determination",      "Choices, autonomy, personal control, goals",
-  "Social participation", "Interpersonal relations", "Social networks, activities, relationships",
-  "                    ", "Social inclusion",        "Community integration, participation, roles",
-  "                    ", "Rights",                  "Human (respect/dignity, equality), Legal",
-  "Well-being",           "Emotional well-being",    "Safety, positive experiences, self-concept, stress",
-  "          ",           "Physical well-being",     "Health, nutrition, recreation/physical exertion",
-  "          ",           "Material well-being",     "Financial status, employment, housing, possessions"
+  "Direction",     "Independence",         "Personal development",    "Education status, personal skills, ADLs, IADLs",
+  "         ",     "            ",         "Self-determination",      "Choices, autonomy, personal control, goals",
+  "Connection","Social participation", "Interpersonal relations", "Social networks, activities, relationships",
+  "         ", "                    ", "Social inclusion",        "Community integration, participation, roles",
+  "         ", "                    ", "Rights",                  "Human (respect/dignity, equality), Legal",
+  "Description","Well-being",           "Emotional well-being",    "Safety, positive experiences, self-concept, stress",
+  "         ","          ",           "Physical well-being",     "Health, nutrition, recreation/physical exertion",
+  "         ","          ",           "Material well-being",     "Financial status, employment, housing, possessions"
 ) %>%
 knitr::kable(caption = 'QoL Dimensions')
 
@@ -63,7 +63,7 @@ Please note that the framework listed above is one of many potential models, eac
 
 One might well ask: *Is quality of life the only potential framework that we could use to measure improvement?*  The answer is *No*, so it is worth discussing other options and briefly reviewing the attributes of each.  Other options include:
 
-- *Symptom reduction*: Measurement of reduction in symptoms related to specific diagnosable conditions.  Symptom scales such as the [PHQ-9](https://www.phqscreeners.com/sites/g/files/g10049256/f/201412/PHQ-9_English.pdf), [GAD-7]() and other tools have commonly been used to measure the impact of treatments on specific conditions, but they are more challenging to use for people with multiple co-occuring conditions (MCC).
+- *Symptom reduction*: Measurement of reduction in symptoms related to specific diagnosable conditions.  Symptom scales such as the [PHQ-9](https://www.phqscreeners.com/sites/g/files/g10049256/f/201412/PHQ-9_English.pdf), [GAD-7]() and other tools have commonly been used to measure the impact of treatments on specific conditions, but they are more challenging to use for people with multiple co-occurring conditions (MCC).
 - *Improving functional status*: Most currently used assessment tools address functional status, measuring the impact of various conditions on broader life areas in terms of their impact on functional ability.  These are broader than symptom scales, and can detect the impact of various symptoms on a particular functional domain.
 - *Health-related quality of life (HRQoL)*:  HRQoL addresses a subset of QoL domains which are related to perceived physical and mental health.  These models typically exclude non-medical areas such as education or rights, focusing on physical domains like 'mobility'. 
 
