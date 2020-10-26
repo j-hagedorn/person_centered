@@ -21,7 +21,7 @@ tribble(
   #--|--|----
   "QoL",     "Why?",       "Vision for a better life",  "What areas of life do I want to focus on?",
   "COM-B",   "What?",      "Turning vision into plan",  "How will I start to address my goal?",
-  "PDCA",    "How?",       "Making my plan work",      "How is the plan working? How to change?"
+  "PDCA",    "How?",       "Making my plan work",       "How is the plan working? How to change?"
 ) %>%
 knitr::kable(caption = 'Paradigms related to PCP')
 
