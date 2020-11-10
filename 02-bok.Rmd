@@ -36,194 +36,39 @@ Potential uses of this body of knowledge include the following:
 
 ### What makes a concept a 'core' concept?
 
+```{r}
+concept_summary <-
+  concepts %>%
+  filter(!is.na(concept)) %>%
+  group_by(concept) %>%
+  summarize(
+    includes = paste(term,collapse = "; "),
+    n = sum(term_count)
+  ) %>%
+  arrange(desc(n))
+```
+
 In order to compile relevant policies and guidance related to person-centered planning, we selected and defined an initial set of core concepts related to person-centered planning.  The 'source of truth' for these concepts was state-level policy in Michigan, since this is the level at which shared dialogue and consistent implementation is sought.
 
-```{r subset_corpus}
-df <-
-  corpus %>%
-  select(
-    document = document_abbrev, 
-    text, page = page_num, 
-    sentence = location_num
-  ) %>%
-  mutate(
-    text = removeNumbers(text),
-    text = stripWhitespace(text),
-    text = str_replace_all(text,"\\s+"," "),
-    text = str_replace_all(text,"- ",""),
-    # Replace department names with acronyms to avoid count of terms
-    text = str_replace_all(
-      text,
-      regex("MICHIGAN DEPARTMENT OF HEALTH AND HUMAN SERVICES",ignore_case = T),
-      "MDHHS"
-    ),
-    text = str_replace_all(
-      text,
-      regex("BEHAVIORAL HEALTH AND DEVELOPMENTAL DISABILITIES ADMINISTRATION", ignore_case = T),
-      "BHDDA"
-    ),
-    text = str_replace_all(
-      text,
-      regex("Individual Plan of Services|Individual Plan of Service", ignore_case = T),
-      "IPOS"
-    ),
-    text = str_replace_all(
-      text,
-      regex("self determination|self-determination", ignore_case = T),
-      "SD"
-    ),
-    text = str_replace_all(
-      text,regex("community mental health", ignore_case = T),"CMH"
-    ),
-    text = str_replace_all(
-      text, regex("hcbs final rule", ignore_case = T),"HCBSFR"
-    ),
-    text = str_replace_all(
-      text,regex("person centered plan ", ignore_case = T),"IPOS "
-    ),
-    text = str_replace_all(
-      text,regex("person centered planning|person-centered planning", ignore_case = T),"PCP"
-    ),
-    text = str_replace_all(
-      text, regex("services and supports|supports and services", ignore_case = T),"servicesupport"
-    )
-  ) %>%
-  filter(!str_detect(text,"^\\.$")) %>%
-  filter(str_detect(text,""))
-```
-
-```{r define_synonyms}
-syn <-
-  pcp_nodes %>%
-  mutate(
-    list = str_split(
-      paste0(concept_name,";", str_replace_all(synonyms,"; ",";")),
-      ";"
-    )
-  )
-
-```
-
-```{r annotate, results='hide', cache=TRUE}
-pcp_annot <- 
-  df %>%
-  filter(document %in% c("PCP","Self-D")) %>%
-  mutate(doc_id = document) %>%
-  # Collapse each document to a single row
-  group_by(doc_id) %>%
-  summarize(text = paste(text,collapse = " ")) %>%
-  cleanNLP::cnlp_annotate() %>% 
-  .$token 
-
-
-# tst <- 
-#   df %>% 
-#   mutate(doc_id = "pcp") %>%
-#   # Collapse each document to a single row
-#   group_by(doc_id) %>%
-#   summarize(text = paste(text,collapse = " ")) %>%
-#   .$text %>%
-#   spacy_parse(
-#     dependency = T, 
-#     nounphrase = T,
-#     additional_attributes = c("is_oov","sentiment","cluster","tag_"))
-
-```
-
-```{r flag_concepts}
-
-# This should eventually be converted to use functional programming, e.g. purrr::map()
-
-flag_concepts <- function(annot_df){
-  
-  annot_df %>%
-  mutate(lemma = str_to_lower(lemma)) %>%
-  # derive concepts from terms
-  mutate(
-    concept_name = case_when(
-      # Apply exceptions first
-      lemma %in% c("plan") & upos %in% c("VERB") ~ "pcp process",
-      lemma %in% c("pcp","planning") ~ "pcp process",
-      lemma %in% syn$list[syn$concept_name=="person"][[1]] & upos %in% c("NOUN") ~ "person",
-      lemma %in% syn$list[syn$concept_name=="description"][[1]] & upos %in% c("NOUN") ~ "description",
-      lemma %in% syn$list[syn$concept_name=="direction"][[1]] & upos %in% c("NOUN") ~ "direction",
-      lemma %in% syn$list[syn$concept_name=="connections"][[1]] & upos %in% c("NOUN") ~ "connections",
-      lemma %in% syn$list[syn$concept_name=="goals"][[1]] & upos %in% c("NOUN") ~ "goals",
-      lemma %in% syn$list[syn$concept_name=="objectives"][[1]] & upos %in% c("NOUN") ~ "objectives",
-      lemma %in% syn$list[syn$concept_name=="decisions"][[1]] & upos %in% c("NOUN","VERB") ~ "decisions",
-      lemma %in% syn$list[syn$concept_name=="values"][[1]] & upos %in% c("NOUN") ~ "values",
-      lemma %in% syn$list[syn$concept_name=="preferences"][[1]] & upos %in% c("NOUN") ~ "preferences",
-      lemma %in% syn$list[syn$concept_name=="strengths"][[1]] & upos %in% c("NOUN") ~ "strengths",
-      lemma %in% syn$list[syn$concept_name=="needs"][[1]] & upos %in% c("NOUN","VERB","ADJ") ~ "needs",
-      lemma %in% syn$list[syn$concept_name=="relationships"][[1]] & upos %in% c("NOUN") ~ "relationships",
-      lemma %in% syn$list[syn$concept_name=="friends"][[1]] & upos %in% c("NOUN") ~ "friends",
-      lemma %in% syn$list[syn$concept_name=="family"][[1]] & upos %in% c("NOUN") ~ "family",
-      lemma %in% syn$list[syn$concept_name=="partner"][[1]] & upos %in% c("NOUN") ~ "partner",
-      lemma %in% syn$list[syn$concept_name=="community"][[1]] & upos %in% c("NOUN") ~ "community",
-      lemma %in% syn$list[syn$concept_name=="culture"][[1]] & upos %in% c("NOUN") ~ "culture",
-      lemma %in% syn$list[syn$concept_name=="environment"][[1]] & upos %in% c("NOUN") ~ "environment",
-      lemma %in% syn$list[syn$concept_name=="resources"][[1]] & upos %in% c("NOUN") ~ "resources",
-      lemma %in% syn$list[syn$concept_name=="property"][[1]] & upos %in% c("NOUN") ~ "property",
-      lemma %in% syn$list[syn$concept_name=="finances"][[1]] & upos %in% c("NOUN") ~ "finances",
-      lemma %in% syn$list[syn$concept_name=="information"][[1]] & upos %in% c("NOUN") ~ "information",
-      lemma %in% syn$list[syn$concept_name=="services"][[1]] & upos %in% c("NOUN") ~ "services",
-      lemma %in% syn$list[syn$concept_name=="home"][[1]] & upos %in% c("NOUN") ~ "home",
-      lemma %in% syn$list[syn$concept_name=="nature"][[1]] & upos %in% c("NOUN") ~ "nature",
-      lemma %in% syn$list[syn$concept_name=="neighborhood"][[1]] & upos %in% c("NOUN") ~ "neighborhood",
-      lemma %in% syn$list[syn$concept_name=="proximity"][[1]] & upos %in% c("NOUN") ~ "proximity",
-      lemma %in% syn$list[syn$concept_name=="pcp"][[1]] & upos %in% c("NOUN") ~ "pcp",
-      lemma %in% syn$list[syn$concept_name=="documentation"][[1]] & upos %in% c("NOUN") ~ "documentation",
-      lemma %in% syn$list[syn$concept_name=="ipos"][[1]] & upos %in% c("NOUN") ~ "ipos",
-      lemma %in% syn$list[syn$concept_name=="addendum"][[1]] & upos %in% c("NOUN") ~ "addendum",
-      lemma %in% syn$list[syn$concept_name=="review"][[1]] & upos %in% c("NOUN") ~ "review",
-      lemma %in% syn$list[syn$concept_name=="ipos content"][[1]] & upos %in% c("NOUN") ~ "ipos content",
-      lemma %in% syn$list[syn$concept_name=="ipos features"][[1]] & upos %in% c("NOUN") ~ "ipos features",
-      lemma %in% syn$list[syn$concept_name=="pcp process"][[1]] & upos %in% c("NOUN") ~ "pcp process",
-      lemma %in% syn$list[syn$concept_name=="understanding"][[1]] & upos %in% c("NOUN") ~ "understanding",
-      lemma %in% syn$list[syn$concept_name=="assessment"][[1]] & upos %in% c("NOUN") ~ "assessment",
-      lemma %in% syn$list[syn$concept_name=="preplanning"][[1]] & upos %in% c("NOUN") ~ "preplanning",
-      lemma %in% syn$list[syn$concept_name=="scheduling"][[1]] & upos %in% c("NOUN") ~ "scheduling",
-      lemma %in% syn$list[syn$concept_name=="pcp meeting"][[1]] & upos %in% c("NOUN") ~ "pcp meeting",
-      lemma %in% syn$list[syn$concept_name=="service selection"][[1]] & upos %in% c("NOUN") ~ "service selection",
-      lemma %in% syn$list[syn$concept_name=="implementation"][[1]] & upos %in% c("NOUN") ~ "implementation",
-      lemma %in% syn$list[syn$concept_name=="monitoring"][[1]] & upos %in% c("NOUN") ~ "monitoring",
-      lemma %in% syn$list[syn$concept_name=="adjustment"][[1]] & upos %in% c("NOUN") ~ "adjustment",
-      lemma %in% syn$list[syn$concept_name=="outcome"][[1]] & upos %in% c("NOUN","VERB") ~ "outcome",
-      lemma %in% syn$list[syn$concept_name=="benefits"][[1]] & upos %in% c("NOUN") ~ "benefits",
-      TRUE ~ NA_character_
-    )
-  ) 
-  
-}
-
-concepts <- pcp_annot %>% flag_concepts()
-
-
-```
-
 The following methods were used to develop this initial set of core concepts:
-
-<!-- Add appendix regarding detailed methods.  Produce core datasets using appendix scripts (not run) and load output at beginning. -->
+<!-- Add appendix regarding detailed methods.  Produce core datasets using scripts in regulate repo and load at beginning. -->
 
 - **Manual review and annotation** of documents which define person-centered planning in the Michigan Public Behavioral Health System.  These include (a) the Person-Centered Planning Policy^[@pcp-policy], (b) the Self-Determination Policy and Practice Guideline^[@sd-policy], and (c) the Michigan Mental Health Code section 330.1712 Individualized written plan of services^[@mi-mhc].
-- **Identifying synonyms** For instance, the term *person* was mapped to the similar terms *`r paste(synonyms$person, collapse = ", ")`*.  This was done for all core concepts in order to identify their occurrence across multiple policies.
+- **Identifying synonyms** For instance, the term *person* was mapped to terms such as *patient*, *recipient*, and *beneficiary*.  This was done for all core concepts in order to identify their occurrence across multiple policies.
 - **Comprehensive annotation** for the policies referenced above, to assure that the most commonly used terms and phrases were included as core concepts.
 
 ```{r plot_concept, fig.height=5, fig.width=6}
-concepts %>%
-  # Remove punctuation, conjunctions, etc.
-  filter(!upos %in% c("PUNCT","DET","CCONJ","ADP","PART","AUX")) %>%
-  group_by_all() %>%
-  summarize(n = n()) %>%
-  filter(!is.na(concept_name)) %>% 
-  group_by(concept_name) %>% 
-  summarize(n = n()) %>% 
-  arrange(desc(n)) %>% 
-  ggplot(aes(x = fct_reorder(concept_name,n), y = n)) +
+concept_summary %>% 
+  ggplot(
+    aes(
+      x = fct_reorder(str_replace_all(concept,"_"," "),n), 
+      y = n
+    )
+  ) +
   geom_col() +
   labs(
     title = "Person-Centered Planning Concepts",
-    subtitle = "Most frequent concepts found in state-level policies",
+    subtitle = "Most frequent concepts found in state and federal policies",
     x = "Concept", y = "Occurrences"
   ) +
   coord_flip() +
