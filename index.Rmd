@@ -18,8 +18,6 @@ biblio-style: apalike
 
 ```{r setup, echo=FALSE, include=FALSE}
 library(tidygraph); library(tidyverse); library(tidytext)
-library(topicmodels); library(tm)
-library(cleanNLP); cleanNLP::cnlp_init_udpipe()
 
 #Set global opts
 knitr::opts_chunk$set(echo = FALSE, dpi = 350, message = F, comment = F)
