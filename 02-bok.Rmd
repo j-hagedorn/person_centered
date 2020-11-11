@@ -43,6 +43,7 @@ concept_summary <-
   group_by(concept) %>%
   summarize(
     includes = paste(term,collapse = "; "),
+    n_terms = n_distinct(term),
     n = sum(term_count)
   ) %>%
   arrange(desc(n))
@@ -53,9 +54,11 @@ In order to compile relevant policies and guidance related to person-centered pr
 The following methods were used to develop this initial set of core concepts:
 <!-- Add appendix regarding detailed methods.  Produce core datasets using scripts in regulate repo and load at beginning. -->
 
-- **Manual review and annotation** of key documents which define person-centered planning in the Michigan Public Behavioral Health System.  These include (a) the Person-Centered Planning Policy^[@pcp-policy], (b) the Self-Direction Technical Requirement Guide^[@sd-policy], and (c) the Michigan Mental Health Code section 330.1712 Individualized written plan of services^[@mi-mhc].
-- **Identifying synonyms** For instance, the term *person* was mapped to terms such as *patient*, *recipient*, and *beneficiary*.  This was done for all core concepts in order to identify their occurrence across multiple policies.
-- **Comprehensive annotation** for the policies referenced above, to assure that commonly used terms and phrases are mapped to core concepts.
+- **Manual review and synopsis** of key documents which define person-centered planning in the Michigan Public Behavioral Health System.  These include (a) the Person-Centered Planning Policy^[@pcp-policy], (b) the Self-Direction Technical Requirement Guide^[@sd-policy], and (c) the Michigan Mental Health Code section 330.1712 Individualized written plan of services^[@mi-mhc].
+- **Automatic key phrase identification** from all source documents to identify significant phrases.
+- **Identifying synonyms** across identified terms and phrases. For instance, the term *person* was mapped to terms such as *patient*, *recipient*, and *beneficiary*.  This was done for terms and phrases in order to identify their occurrence across multiple policies.
+- **Purposeful Word Choice.**  We select a distinct, 'master' term to refer to various synonyms across documents. The selection of terms is informed by a consistent set of principles.
+- **Annotation** for source documents, to identify the presence and concentration of each core concept in each page/section.
 
 ```{r plot_concept, fig.height=5, fig.width=6}
 concept_summary %>% 
@@ -72,10 +75,10 @@ concept_summary %>%
     x = "Concept", y = "Occurrences"
   ) +
   coord_flip() +
-  theme_minimal() 
+  theme_doc_flip
 ```
 
-- **Purposeful Word Choice.**  We select a distinct, 'master' term to refer to various synonyms across documents. The selection of terms is informed by a consistent set of principles.
+If additional concepts are identified, these can be added to the document tagging in order to associate particular regulations with these concepts.
 
 ### Characteristics of a Person  
 
@@ -95,11 +98,13 @@ library(tidygraph); library(ggraph)
 x <- 
   as_tbl_graph(pcp_edges) %>% 
   activate(nodes) %>% 
-  left_join(pcp_nodes, by = c("name" = "concept_name")) 
+  left_join(pcp_nodes, by = c("name" = "concept_name")) %>%
+  left_join(concept_summary, by = c("name" = "concept")) %>%
+  mutate(root = node_is_root())
 
-ggraph(x, layout = "dendrogram",circular = T) +
+ggraph(x, layout = "dendrogram",circular = F) +
   geom_edge_elbow(alpha = 0.5, color = "grey") +
-  geom_node_point() +
+  geom_node_point(aes(color = n,size = n_terms),show.legend = F) +
   geom_node_text(
     aes(label = name), family = "Arial Narrow",
     repel = T, nudge_y = 0.01
