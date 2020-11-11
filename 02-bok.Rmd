@@ -4,11 +4,11 @@
 knitr::opts_chunk$set(echo = FALSE, dpi = 350, message = F, comment = F, warning = F)
 ```
 
-As a foundation for this effort, MDHHS has begun to develop a shared repository of key terms and concepts, their definitions, and how they are related to one another.  This common language has the following key features:
+As a foundation for this effort, MDHHS has begun to develop a shared repository of key terms and concepts, their definitions, and how these are related to one another.  This common language has the following key features:
 
 - Relates all terminology back to the person, who drives service delivery
-- Includes concepts related to the PCP process, as broadly defined above, as well as common attributes for understanding the person^[Note that the body of knowledge is not intended to classify services and supports.]
-- Promotes consistency in implementation and training, and a platform for future development
+- Includes concepts related to person-centered practices, as broadly defined above, as well as common attributes for understanding the person^[Note that the body of knowledge is not intended to classify services and supports.]
+- Promotes consistency in implementation and training, and a platform for future development.
 - Allows for change; the language can be extended as new concepts are identified.^[This approach also requires that ideas claiming to be new must differentiate themselves from existing terms and concepts.]
 - Reduces confusion across various policies with inconsistent terminology and scope
 
@@ -26,7 +26,7 @@ Our purpose here is to identify and define concepts related to person-centered p
 
 Potential uses of this body of knowledge include the following:
 
-- *Policy Search*: searching of existing policies in electronic format to identify requirements related to each core concept
+- *Policy Search*: searching of existing policies in electronic format to identify requirements related to each core concept of person-centered practice.
 - *Impact of Policy Changes*: identification of relevant new federal policy requirements to allow for clear understanding of which current policies are related and complicated by the new federal policy
 - *Basis of Curriculum*: serving as the foundation of [a standard curriculum](#curriculum) to train people receiving services, their families, direct-care team members, supports coordinators, case managers, clinicians, and others about the PCP process.
 - *Monitoring Quality*: allowing for [system-level monitoring of the quality of PCP practice](#measure), through measurements and/or the use of a best practice review model.^[This could be developed similar to the MI-FAST model, which has been used to review the fidelity to evidence-based practices.]
@@ -48,14 +48,14 @@ concept_summary <-
   arrange(desc(n))
 ```
 
-In order to compile relevant policies and guidance related to person-centered planning, we selected and defined an initial set of core concepts related to person-centered planning.  The 'source of truth' for these concepts was state-level policy in Michigan, since this is the level at which shared dialogue and consistent implementation is sought.
+In order to compile relevant policies and guidance related to person-centered practice, we selected and defined an initial set of core concepts related to person-centered planning.  The 'source of truth' for these concepts is defined with greater detail [in the following section](#policy_scope).
 
 The following methods were used to develop this initial set of core concepts:
 <!-- Add appendix regarding detailed methods.  Produce core datasets using scripts in regulate repo and load at beginning. -->
 
-- **Manual review and annotation** of documents which define person-centered planning in the Michigan Public Behavioral Health System.  These include (a) the Person-Centered Planning Policy^[@pcp-policy], (b) the Self-Determination Policy and Practice Guideline^[@sd-policy], and (c) the Michigan Mental Health Code section 330.1712 Individualized written plan of services^[@mi-mhc].
+- **Manual review and annotation** of key documents which define person-centered planning in the Michigan Public Behavioral Health System.  These include (a) the Person-Centered Planning Policy^[@pcp-policy], (b) the Self-Direction Technical Requirement Guide^[@sd-policy], and (c) the Michigan Mental Health Code section 330.1712 Individualized written plan of services^[@mi-mhc].
 - **Identifying synonyms** For instance, the term *person* was mapped to terms such as *patient*, *recipient*, and *beneficiary*.  This was done for all core concepts in order to identify their occurrence across multiple policies.
-- **Comprehensive annotation** for the policies referenced above, to assure that the most commonly used terms and phrases were included as core concepts.
+- **Comprehensive annotation** for the policies referenced above, to assure that commonly used terms and phrases are mapped to core concepts.
 
 ```{r plot_concept, fig.height=5, fig.width=6}
 concept_summary %>% 
