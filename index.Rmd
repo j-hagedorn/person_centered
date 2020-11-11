@@ -26,7 +26,29 @@ knitr::opts_chunk$set(echo = FALSE, dpi = 350, message = F, comment = F)
 corpus <- read_csv("data/corpus_concepts.csv")
 concepts <- read_csv("data/concepts.csv")
 tcm <- read_csv("data/tcm.csv")
-reg_list <- read_csv("data/reg_list.csv")
+
+reg_list <- 
+  read_csv("data/reg_list.csv") %>%
+  mutate(
+    short_title = str_replace_all(short_title,"medicare-and-medicaid-programs-",""),
+    short_title = str_replace_all(short_title,"medicaid-program-",""),
+    short_title = str_replace_all(short_title,"medicare-program-",""),
+    short_title = str_replace_all(short_title,"medicaid-and-childrens-health-insurance-programs-",""),
+    short_title = str_replace_all(short_title,"medicaid-and-childrens-health-insurance-program-",""),
+    short_title = str_replace_all(short_title,"medicare-medicaid-and-childrens-health-insurance-programs",""),
+    short_title = str_replace_all(short_title,"-"," "),
+    short_title = str_to_title(short_title),
+    short_title = if_else(!is.na(short_title),short_title,title)
+  ) %>%
+  mutate(
+    agencies = case_when(
+      str_detect(agencies,"Centers for Medicare & Medicaid Services")   ~ "CMS",
+      str_detect(agencies,"Centers for Medicare and Medicaid Services") ~ "CMS",
+      str_detect(agencies,"Centers for Medicare & Medicaid Services")   ~ "CMS",
+      str_detect(agencies,"Health Care Financing Administration")       ~ "CMS",
+      TRUE ~ agencies
+    )
+  ) 
 
 pcp_nodes <- readxl::read_excel("data/pcp_concept_map.xlsx",sheet = "nodes")
 pcp_edges <- readxl::read_excel("data/pcp_concept_map.xlsx",sheet = "edges")
