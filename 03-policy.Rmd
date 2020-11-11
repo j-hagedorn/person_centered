@@ -46,21 +46,8 @@ The previous section outlined the process for deriving key concepts from state-l
 
 To do this, this analysis maps policy words and phrases with their corresponding concepts.  As new policies are identified for inclusion, new synonyms for core concepts will need to be identified if new terms are introduced to refer to existing concepts.
 
-The plot below shows the number of occurrences^[using log scale to show the less frequently used terms] of core concepts across the entire corpus of policies identified above.  While the frequency of occurrence does not speak to the importance of one concept in relationship to others, it point out the number of uses of the concept in different contexts, underlining the challenge in harmonizing divergent policy language.
+The plot below shows the number of occurrences^[using log scale to show the less frequently used terms] of core concepts across the entire corpus of policies identified above.  While the frequency of occurrence does not speak to the importance of one concept in relationship to others, it points out the number of uses of the concept in different contexts, underlining the challenge in harmonizing divergent policy language.
 
-```{r policy_annotate, eval=FALSE, include=FALSE}
-policy_annot <- 
-  df %>%
-  # filter(document %in% c("PCP","Self-D")) %>%
-  mutate(doc_id = document) %>%
-  # Collapse each document to a single row
-  group_by(doc_id) %>%
-  summarize(text = paste(text,collapse = " ")) %>%
-  cleanNLP::cnlp_annotate() %>% 
-  .$token 
-
-feather::write_feather(policy_annot,"data/policy_annot.feather")
-```
 
 ```{r policy_concept, cache=TRUE}
 policy_annot <- feather::read_feather("data/policy_annot.feather")
