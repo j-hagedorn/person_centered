@@ -17,7 +17,7 @@ biblio-style: apalike
 ---
 
 ```{r setup, echo=FALSE, include=FALSE}
-library(tidyverse); library(tidygraph); library(tidytext)
+library(tidyverse); library(tidygraph); library(tidytext); library(ggraph)
 
 #Set global opts
 knitr::opts_chunk$set(echo = FALSE, dpi = 350, message = F, comment = F)
@@ -53,6 +53,33 @@ reg_list <-
 pcp_nodes <- readxl::read_excel("data/pcp_concept_map.xlsx",sheet = "nodes")
 pcp_edges <- readxl::read_excel("data/pcp_concept_map.xlsx",sheet = "edges")
 
+```
+
+```{r themes}
+extrafont::loadfonts(device="win")
+font_family = "Arial Narrow"
+
+theme_doc <- 
+  theme_minimal() + 
+  theme(
+    plot.title.position = "plot",
+    text = element_text(family = font_family),
+    panel.grid.major.x = element_blank(),
+    panel.grid.major.y = element_line(size=.1, color="darkgrey" ),
+    panel.grid.minor.y = element_line(size=.1, color="darkgrey" ),
+    axis.text.x.bottom = element_text()
+  )
+
+theme_doc_flip <- 
+  theme_minimal() + 
+  theme(
+    plot.title.position = "plot",
+    text = element_text(family = font_family),
+    panel.grid.major.y = element_blank(),
+    panel.grid.major.x = element_line(size=.1, color="darkgrey" ),
+    panel.grid.minor.x = element_line(size=.1, color="darkgrey" ),
+    axis.text.y.left = element_text()
+  )
 ```
 
 **This document is currently a work in progress and is not intended for distribution outside of those collaborating on its development with the direction of MDHHS-BHDDA.**
