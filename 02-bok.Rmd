@@ -102,11 +102,11 @@ x <-
   left_join(concept_summary, by = c("name" = "concept")) %>%
   mutate(root = node_is_root())
 
-ggraph(x, layout = "dendrogram",circular = F) +
+ggraph(x, layout = "dendrogram",circular = T) +
   geom_edge_elbow(alpha = 0.5, color = "grey") +
   geom_node_point(aes(color = n,size = n_terms),show.legend = F) +
   geom_node_text(
-    aes(label = name), family = "Arial Narrow",
+    aes(label = name), #family = "Arial Narrow",
     repel = T, nudge_y = 0.01
   ) +
   labs(
@@ -115,6 +115,32 @@ ggraph(x, layout = "dendrogram",circular = F) +
   ) +
   theme_graph()
 ```
+
+```{r viz, include=FALSE}
+library(visNetwork)
+tst <- 
+  x %>%
+  activate(nodes) %>%
+  mutate(
+    value = if_else(!is.na(n),n,0),
+    value = log(value)
+  ) %>%
+  toVisNetworkData()
+
+  visNetwork(
+    nodes = tst$nodes, 
+    edges = tst$edges
+  ) %>% 
+  visNodes(
+    #label = tst$nodes$title
+  ) %>%
+  visOptions(highlightNearest = TRUE) %>%
+  visHierarchicalLayout(
+    # direction = "LR",
+    sortMethod = "directed"
+  )
+```
+
 
 Each element of the person-centered planning framework is shown above.  Each concept is defined by its relation with other concepts, as well as having a distinct definition, as shown below.
 
