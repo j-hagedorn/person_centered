@@ -100,7 +100,12 @@ x <-
   activate(nodes) %>% 
   left_join(pcp_nodes, by = c("name" = "concept_name")) %>%
   left_join(concept_summary, by = c("name" = "concept")) %>%
-  mutate(root = node_is_root())
+  mutate(
+    root = node_is_root(),
+    n = ifelse(!is.na(n),n,0),
+    n_terms = ifelse(!is.na(n_terms),n_terms,0)
+  ) %>%
+  select(-synonyms,-definition_source)
 
 ggraph(x, layout = "dendrogram",circular = T) +
   geom_edge_elbow(alpha = 0.5, color = "grey") +
@@ -118,27 +123,29 @@ ggraph(x, layout = "dendrogram",circular = T) +
 
 ```{r viz, include=FALSE}
 library(visNetwork)
-tst <- 
+tst <-
   x %>%
   activate(nodes) %>%
-  mutate(
-    value = if_else(!is.na(n),n,0),
-    value = log(value)
-  ) %>%
+  rename(title = concept_definition) %>%
+  mutate(value = log(n + 1)) %>%
   toVisNetworkData()
 
+p <-
   visNetwork(
     nodes = tst$nodes, 
     edges = tst$edges
   ) %>% 
-  visNodes(
-    #label = tst$nodes$title
+  visOptions(
+    highlightNearest = T
   ) %>%
-  visOptions(highlightNearest = TRUE) %>%
   visHierarchicalLayout(
     # direction = "LR",
     sortMethod = "directed"
   )
+
+visSave(p,"pcp_network.html")
+x %>% activate(nodes) %>% as_tibble() %>% write_csv("data/concept_descriptions.csv")
+
 ```
 
 
