@@ -1,5 +1,6 @@
 --- 
 title: "A Person-Centered Framework"
+subtitle: "Technical Guide for Behavioral Health Providers"
 author: "Various authors"
 date: "`r Sys.Date()`"
 output:
@@ -16,18 +17,69 @@ biblio-style: apalike
 ---
 
 ```{r setup, echo=FALSE, include=FALSE}
-library(tidygraph); library(tidyverse); library(tidytext)
-library(topicmodels); library(tm)
-library(cleanNLP); cleanNLP::cnlp_init_udpipe()
+library(tidyverse); library(tidygraph); library(tidytext); library(ggraph)
 
 #Set global opts
 knitr::opts_chunk$set(echo = FALSE, dpi = 350, message = F, comment = F)
 
 # Load datasets
-corpus <- feather::read_feather("data/corpus.feather")
+corpus <- read_csv("data/corpus_concepts.csv")
+concepts <- read_csv("data/concepts.csv")
+tcm <- read_csv("data/tcm.csv")
+
+reg_list <- 
+  read_csv("data/reg_list.csv") %>%
+  mutate(
+    short_title = str_replace_all(short_title,"medicare-and-medicaid-programs-",""),
+    short_title = str_replace_all(short_title,"medicaid-program-",""),
+    short_title = str_replace_all(short_title,"medicare-program-",""),
+    short_title = str_replace_all(short_title,"medicaid-and-childrens-health-insurance-programs-",""),
+    short_title = str_replace_all(short_title,"medicaid-and-childrens-health-insurance-program-",""),
+    short_title = str_replace_all(short_title,"medicare-medicaid-and-childrens-health-insurance-programs",""),
+    short_title = str_replace_all(short_title,"-"," "),
+    short_title = str_to_title(short_title),
+    short_title = if_else(!is.na(short_title),short_title,title)
+  ) %>%
+  mutate(
+    agencies = case_when(
+      str_detect(agencies,"Centers for Medicare & Medicaid Services")   ~ "CMS",
+      str_detect(agencies,"Centers for Medicare and Medicaid Services") ~ "CMS",
+      str_detect(agencies,"Centers for Medicare & Medicaid Services")   ~ "CMS",
+      str_detect(agencies,"Health Care Financing Administration")       ~ "CMS",
+      TRUE ~ agencies
+    )
+  ) 
+
 pcp_nodes <- readxl::read_excel("data/pcp_concept_map.xlsx",sheet = "nodes")
 pcp_edges <- readxl::read_excel("data/pcp_concept_map.xlsx",sheet = "edges")
 
+```
+
+```{r themes}
+extrafont::loadfonts(device="win")
+font_family = "Arial Narrow"
+
+theme_doc <- 
+  theme_minimal() + 
+  theme(
+    plot.title.position = "plot",
+    text = element_text(family = font_family),
+    panel.grid.major.x = element_blank(),
+    panel.grid.major.y = element_line(size=.1, color="darkgrey" ),
+    panel.grid.minor.y = element_line(size=.1, color="darkgrey" ),
+    axis.text.x.bottom = element_text()
+  )
+
+theme_doc_flip <- 
+  theme_minimal() + 
+  theme(
+    plot.title.position = "plot",
+    text = element_text(family = font_family),
+    panel.grid.major.y = element_blank(),
+    panel.grid.major.x = element_line(size=.1, color="darkgrey" ),
+    panel.grid.minor.x = element_line(size=.1, color="darkgrey" ),
+    axis.text.y.left = element_text()
+  )
 ```
 
 **This document is currently a work in progress and is not intended for distribution outside of those collaborating on its development with the direction of MDHHS-BHDDA.**
@@ -40,7 +92,7 @@ That belief is thankfully not a new one.  It aligns with the person-centered pla
 
 > *The purpose of the community mental health system is to support adults and children... to live successfully in their communities — achieving community inclusion and participation, independence, and productivity [and to] to identify and achieve their personal goals.*
 
-The framework defined below is an attempt to apply these longstanding and fundamental values in a way that allows for consistent definitions, implementation, and evaluation.
+The framework defined below is an attempt to apply these longstanding and fundamental values in a way that allows for consistent definitions, implementation, and evaluation.   
 
 Each person has the ability to choose a better future, to chart a course toward it and strive to reach it: person-centered planning provides a platform to enable this process.  In order for services to effectively support a person in this process, they must be provided within the context of a person's goals. Orienting a broad and complex system to keep the person as its central focus requires a consistent, overarching framework.  MDHHS-BHDDA is working to support this person-centered orientation with the following strategy:
 
@@ -50,6 +102,7 @@ which will inform a [shared curriculum](#curriculum)
 and [measurement framework](#measure)
 to support [improved quality of life](#pcpdca) for each person.
 
+This document is intended to serve as a scaffolding: a working document to support various system redesign efforts which MDHHS-BHDDA is undertaking.  While it is technical in some parts, this format is intended to assure that no part of the broad scope of PCP is neglected in the course of long-term system design.
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
