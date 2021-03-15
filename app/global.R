@@ -8,6 +8,7 @@ library(shinythemes)
 library(tidyverse)
 library(visNetwork)
 library(digest)
+library(DT)
 library(reactable)
 
 # load data
