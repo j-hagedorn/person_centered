@@ -19,7 +19,7 @@ shinyServer(function(input, output) {
         ),
         sidebarPanel(
           id = "why_main", width = 3,
-          h3("Person Centered Care"),
+          h3("Person Centered Practices"),
           br(),
           p("An approach to care that consciously adopts the perspectives of
           individuals, families and communities, and sees them as participants
@@ -32,7 +32,7 @@ shinyServer(function(input, output) {
           br(),
           tags$li("Review a collection of state and federal requirements to ", strong(em("inform"))," training"),
           br(),
-          tags$li("Identify and implement measurable outcomes to ", strong(em("ensure"))," quality and consistency"),
+          tags$li("Identify and implement measurable outcomes to ensure ",strong(em("quality")), "and consistency"),
           br(),
           br()
         )
@@ -75,10 +75,14 @@ shinyServer(function(input, output) {
       ),
       column(
         width = 12,
-        uiOutput("netText"),
+        tags$head(tags$style("
+                  #conceptText * {display: inline;}")),
+        div(id="conceptText",textOutput("netConcept"), tags$b(textOutput("conceptText")),paste0(".")),
+        tags$em(textOutput("defintionText")),
         br(),
+        textOutput("netText_parent"),
         br(),
-        dataTableOutput("netTbl")
+        dataTableOutput("netTbl_child")
       )
     )
 
@@ -95,7 +99,7 @@ shinyServer(function(input, output) {
             width = 3,
             uiOutput("select_concept"),
             br(),
-            uiOutput("regText"),
+            tags$em(textOutput("regText")),
             br()
           ),
           column(
@@ -105,57 +109,43 @@ shinyServer(function(input, output) {
             br(),
             p("The taxonomy of concepts being used to develop a common language around
             the person-centered planning process were mapped to both state and federal
-            regulations."),
+            regulations. These regulations were reviewed and then associated with specific
+            person-centered planning requirements."),
             p("Selecting a concept from the drop down menu will update the table below to include
-            all documents with content related to the selected concept. The document name,
-            specific section and page numbers are included as well as a link to the full
-            document. Concepts that are not mapped to a regulation will result in a table with
-            no available data."),
+            person-centered planning requirements with content related to the selected concept. 
+            The document name and page number is included as well as a link to the full text. 
+            Concepts that are not mapped to a state or federal regulation document, and subsequently
+            a person-centered planning requirement, are not available in the drop down menu."),
             br()
           )
         ),
         column(
           width = 12,
-          dataTableOutput("regTbl")
+          reactableOutput("regTbl")
         )
       )
     
   })
   
-  ## ui for assure page
+  ## ui for standard page
   
-  output$guarantee <- renderUI({
+  output$standard <- renderUI({
     
     fluidRow(
       column(
-        width = 12,
-        column(
-          width = 3,
-          strong(em("Measuring success")),
-          p(),
-          p("Creating valid and reliable methods of evaluation is crucial in
+        width = 6,
+        strong(em("Measuring success")),
+        p(),
+        p("Creating valid and reliable methods of evaluation is crucial in
             identfying areas that require improvement and determining whether the
             intended goals and objectives have been achieved."),
-          br(),
-          p("The table to the right is an inventory of CMS measures related to
-            behavioral health. They includes measures within the following
-            content areas:"),
-          tags$li("access"),
-          tags$li("decision-making"),
-          tags$li("planning"),
-          tags$li("risk"),
-          tags$li("unrestricted settings"),
-          tags$li("ER visits"),
-          tags$li("care coordination"),
-          tags$li("continuity of care"),
-          tags$li("readmission"),
-          tags$li("substance use"),
-          tags$li("mental health")
-        ),
-        column(
-          width = 9,
-          dataTableOutput("cmsTbl")
-        )
+        p("The table to the right is an inventory of CMS measures related to
+            planning. They includes measures within the following key phrases: 
+            care plan, plan of care, safety plan, and follow-up plan.")
+      ),
+      column(
+        width = 12,
+        dataTableOutput("cmsTbl")
       )
     )
     
@@ -168,19 +158,28 @@ shinyServer(function(input, output) {
   output$response <- renderUI({
     
     fluidPage(
-      titlePanel("Feedback Form"),
-      div(
-        id = "form",
-        textInput("name", "Name", ""),
-        textInput("org", "Organization"),
-        textInput("text", "Feedback"),
-        # checkboxInput("used_shiny", "I've built a Shiny app in R before", FALSE),
-        # sliderInput("r_num_years", "Number of years using R", 0, 25, 2, ticks = FALSE),
-        # selectInput("os_type", "Operating system used most frequently",
-        #             c("",  "Windows", "Mac", "Linux")),
-        actionButton("submit", "Submit", class = "btn-primary")
-      )
+      shinyjs::useShinyjs(),
+        titlePanel("Feedback Form"),
+        div(
+          id = "form",
+          
+          textInput("name", "Name", ""),
+          textInput("org", "Organization"),
+          textInput("email", "Email Address"),
+          selectInput("page", "My feedback is related to the following section:",
+                      c("","Explore",  "Inform", "Quality")),
+          textAreaInput("text", "Feedback"),
+          actionButton("submit", "Submit", class = "btn-primary")
+        ),
+        shinyjs::hidden(
+          div(
+            id = "thankyou_msg",
+            h3("Thanks, your response was submitted successfully!"),
+            actionLink("submit_another", "Submit another response")
+          )
+        )
     )
+    
     
   })
   
@@ -224,7 +223,7 @@ shinyServer(function(input, output) {
     pcp_nodes$rn <- if_else(is.na(pcp_nodes$rn) == T, min(pcp_nodes$rn, na.rm = T) / 2, pcp_nodes$rn)
     
     vis.nodes <- pcp_nodes
-    vis.nodes$label <- vis.nodes$concept_name
+    vis.nodes$label <- vis.nodes$concept
     vis.nodes$title <- vis.nodes$concept_definition
     vis.nodes$size  <- vis.nodes$rn
     vis.nodes$color <- "teal"
@@ -244,28 +243,94 @@ shinyServer(function(input, output) {
     
   })
   
-  output$netText <- renderUI({
+  output$netConcept <- renderText({
     
     if(input$netVis_selected > 0){
       
-      concept <- pcp_nodes %>%
-        filter(id == input$netVis_selected) %>%
-        select(concept_name, concept_definition) %>%
-        mutate(concept_definition = if_else(is.na(concept_definition) == T,
-                                            "This concept is not currently defined",
-                                            paste0("This concept is defined as: ",concept_definition,".")))
-      
-      paste0("You selected the concept ",concept$concept_name,". ",concept$concept_definition)
+      paste0("You selected the concept ")
       
     } else
       
       paste0("A concept has not been selected. Please use the drop down menu above to
-             make a selection.")
+             make a selection")
     
   })
-
   
-  output$netTbl <- renderDataTable({
+  output$conceptText <- renderText({
+    
+    if(input$netVis_selected > 0){
+      
+      text <- pcp_nodes %>%
+        filter(id == input$netVis_selected) %>%
+        select(concept)
+      
+      HTML(paste0("'",text,"'"))
+      
+    } else
+      
+      paste0("")
+    
+  })
+  
+  output$defintionText <- renderText({
+    
+    if(input$netVis_selected > 0){
+      
+      text <- pcp_nodes %>%
+        filter(id == input$netVis_selected) %>%
+        select(concept_definition) %>%
+        mutate(concept_definition = case_when(
+          is.na(concept_definition) == T ~ "This concept is not yet defined.",
+          TRUE ~ paste0('This concept is defined as: ',concept_definition)
+        ))
+      
+      HTML(paste0(text))
+      
+    } else
+      
+      paste0("")
+    
+  })
+  
+  output$netText_parent <- renderText({
+    
+    parent <- pcp_edges %>%
+      filter(to %in% input$netVis_selected) %>%
+      select(to_concept, from_concept) %>%
+      rename(
+        selected = to_concept,
+        related = from_concept
+      ) %>%
+      left_join(pcp_nodes %>%
+                  select(concept, concept_definition), 
+                by = c("related" = "concept")
+      ) %>%
+      select(selected, related, concept_definition)
+    
+    if(input$netVis_selected == 1){
+      
+      paste0("'Person' is the central concept within the Person Centered Planning process. 
+             All other concepts extend from the person and illustrate the various aspects
+             of an individual.")
+
+    } else if(input$netVis_selected > 1) {
+      
+      text <- paste0("The selected concept ", parent$selected," is a subset of of the broader construct ", 
+                     parent$related,". This relationship illustrates that ",parent$selected, 
+                     " is one aspect of ", parent$related,".")
+      
+      HTML(paste0(text))
+      
+    } else
+      
+      paste0("")
+      
+      
+
+  })
+  
+
+  output$netTbl_child <- renderDataTable({
     
     pcp_edges %>%
       filter(from %in% input$netVis_selected) %>%
@@ -274,22 +339,22 @@ shinyServer(function(input, output) {
         selected = from_concept,
         related = to_concept
       ) %>%
-      rbind(pcp_edges %>% 
-              filter(to %in% input$netVis_selected) %>%
-              select(to_concept, from_concept) %>%
-              rename(
-                selected = to_concept,
-                related = from_concept
-              )
-      ) %>%
       left_join(pcp_nodes %>%
-                  select(concept_name, concept_definition), 
-                by = c("related" = "concept_name")
+                  select(concept, concept_definition), 
+                by = c("related" = "concept")
       ) %>%
       select(selected, related, concept_definition) %>%
       datatable(
         rownames = F,
-        colnames = c("Selected concept", "Related concept(s)", "Related concept defintion(s)")
+        caption = "Aspect(s) of the selected concept",
+        colnames = c("Selected concept", "Related concept(s)", "Related concept defintion(s)"),
+        options = list(
+          searching = F,
+          bLengthChange = F,
+          info = F,
+          bPaginate = F
+        )
+        
       )
     
   })
@@ -301,62 +366,68 @@ shinyServer(function(input, output) {
     selectInput(
       "select_concept",
       label = "Select a concept:",
-      choices = unique(pcp_nodes$concept_name)
+      choices = unique(reqs$concept),
+      selected = "Adjust Plan"
     )
     
   })
   
-  output$regText <- renderUI({
+  output$regText <- renderText({
     
     concept <- pcp_nodes %>%
-      filter(concept_name %in% input$select_concept) %>%
-        select(concept_name, concept_definition) %>%
+      filter(concept %in% input$select_concept) %>%
+        select(concept, concept_definition) %>%
         mutate(concept_definition = if_else(is.na(concept_definition) == T,
                                             "The concept you selected is not currently defined.",
-                                            paste0(concept_name,": ",concept_definition,".")))
+                                            paste0(concept,": ",concept_definition)))
     
     paste0(concept$concept_definition)
     
   })
   
-  output$regTbl <- renderDataTable({
+  output$regTbl <- renderReactable({
     
-    corpus_concepts %>%
-      filter(has_concept == TRUE) %>%
-      select(-has_concept) %>%
-      pivot_longer(cols = c(assessment:crisis_plan), names_to = "concept") %>%
-      filter(is.na(value) == FALSE) %>%
-      select(doc_id, section, start_page, stop_page, concept, value) %>%
-      left_join(pcp_nodes %>%
-                  select(id, concept_name),
-                by = c("concept" = "concept_name")
-      ) %>%
+    reqs %>%
       filter(concept %in% input$select_concept) %>%
-      left_join(reg_list,
-                by = c("doc_id" = "document_number")
-      ) %>%
-      select(doc_id, title, section, start_page, stop_page, pdf_url) %>%
-      mutate(pdf_url = paste0("<a href=",pdf_url,">",pdf_url,"</a>")) %>%
-      datatable(
-        rownames = F,
-        escape = F,
-        caption = "Regulations Associated with Person-Centered Planning Concepts",
-        colnames = c("ID", "Document", "Section", "Starts on page...",
-                     "Ends on page...", "Link")
+      select(-concept) %>%
+      rename(Requirement = requirement) %>%
+      reactable(filterable = TRUE,
+                defaultPageSize = 10,
+                groupBy = c("Requirement"),
+                columns = list(
+                  title = colDef(
+                    header = "Document Title"
+                  ),
+                  page = colDef(
+                    header = "Starts on Page..."
+                  ),
+                  url = colDef(
+                    header = "Document Link",
+                    cell = function(value) {
+                    htmltools::tags$a(href = value, target = "_blank", value)
+                  })
+                )
       )
+    
     
   })
   
-  ## ui elements for assure
+  ## ui elements for standard
   
   output$cmsTbl <- renderDataTable({
     
     domain_qm_bhdda %>%
+      filter(key_planning == T) %>%
       select(cmit_id, nqf_id, measure_title, measure_description) %>%
       datatable(
         rownames = F,
-        caption = "CMS Measures Inventory for BHDDA",
+        caption = "CMS Measures Inventory",
         colnames = c("CMIT Ref No", "NQF ID", "Measure Title", "Measure Description")
+        # options = list(
+        #   searching = F,
+        #   bLengthChange = F,
+        #   info = F
+        # )
       )
     
   })
@@ -391,9 +462,18 @@ shinyServer(function(input, output) {
   
   # action to take when submit button is pressed
   observeEvent(input$submit, {
-    
+
     saveData(formData())
-    
+    shinyjs::reset("form")
+    shinyjs::hide("form")
+    shinyjs::show("thankyou_msg")
+
   })
   
+  # submit another response
+  observeEvent(input$submit_another, {
+    shinyjs::show("form")
+    shinyjs::hide("thankyou_msg")
+  })
+
 })

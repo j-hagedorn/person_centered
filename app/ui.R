@@ -8,12 +8,12 @@ ui <-
              uiOutput("why")
     ),
     tabPanel("Explore",
-             uiOutput("search")
-             # tags$style(
-             #   type = "text/css",
-             #   ".shiny-output-error { visibility: hidden; }",
-             #   ".shiny-output-error:before { visibility: hidden; }"
-             # )
+             uiOutput("search"),
+             tags$style(
+               type = "text/css",
+               ".shiny-output-error { visibility: hidden; }",
+               ".shiny-output-error:before { visibility: hidden; }"
+             )
     ),
     tabPanel("Inform",
              uiOutput("advise")
@@ -23,8 +23,8 @@ ui <-
              #   ".shiny-output-error:before { visibility: hidden; }"
              # )
     ),
-    tabPanel("Ensure",
-             uiOutput("guarantee")
+    tabPanel("Quality",
+             uiOutput("standard")
              # tags$style(
              #   type = "text/css",
              #   ".shiny-output-error { visibility: hidden; }",
