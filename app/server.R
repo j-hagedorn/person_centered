@@ -139,7 +139,7 @@ shinyServer(function(input, output) {
         p("Creating valid and reliable methods of evaluation is crucial in
             identfying areas that require improvement and determining whether the
             intended goals and objectives have been achieved."),
-        p("The table to the right is an inventory of CMS measures related to
+        p("The table below is an inventory of CMS measures related to
             planning. They includes measures within the following key phrases: 
             care plan, plan of care, safety plan, and follow-up plan.")
       ),
