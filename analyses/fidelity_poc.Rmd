@@ -1,0 +1,55 @@
+---
+title: "Identify Requirements"
+params:
+  concept: adjust_plan
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message = FALSE, warning = FALSE)
+concept_df <- 
+  read_csv("data/occurs.csv") %>% 
+  filter(concept == params$concept) %>%
+  filter(!is.na(snippet))
+```
+
+# Instructions
+
+This document contains all of the regulatory language which references the concept of `r params$concept`.  Its purpose is to allow for policy experts and analysts to see the various policy snippets related to a key concept and to paraphrase the requirements of the regulation for use in fidelity
+
+1. Read each snippet below, clicking on the link to the policy source if necessary to understand the context.
+2. Highlight relevant requirement language, if that's helpful for focus.
+3. Rewrite any requirements in active, concise language in the space following the `requirement:` prompt.  These should be concrete and observable requirements for use in determining implementation fidelity.
+4. If the passage identifies a requirement that you have already re-written, copy/paste the text from that section after the `requirement:` prompt for the repetitive section.
+5. Put any additional notes or thoughts in the `notes:` section at teh end of the document.
+6. Once done, select "Save as" and save your changes to the file in the same folder by adding the prefix "rev_" to the beginning of the file name, so that a file originally named "`r paste0(params$concept,".docx")`" would be re-named "`r paste0("rev_",params$concept,".docx")`"
+
+# Policy References
+
+The following portions of policy pertain to the concept of *`r concept_name`*:
+
+```{r print_it, results='asis'}
+for (i in 1:nrow(concept_df)) {
+  # Add some text
+  cat("From the **", paste0("[",concept_df$title[i],"](",concept_df$url[i],")"), "**",  sep="")  
+  cat(" beginning on page **", paste(concept_df$start_page[i]), "**",  sep="")  
+  cat("  \n")  
+  cat(" *", paste(concept_df$snippet[i]), "*",  sep="") 
+  cat("  \n")  
+  cat("  \n") 
+  cat("id: ", paste(concept_df$passage_id[i]), sep="") 
+  cat("  \n")  
+  cat("  \n") 
+  cat("requirement: ")
+  cat("  \n")  
+  cat("  \n")
+  cat("-----")
+  cat("  \n")  
+  cat("  \n")
+
+}
+
+cat("notes: ")
+cat("  \n")  
+cat("  \n")
+```
