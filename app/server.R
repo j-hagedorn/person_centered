@@ -450,25 +450,33 @@ shinyServer(function(input, output) {
   
   saveData <- function(data) {
     
+    
     humanTime <- function() format(Sys.time(), "%Y%m%d-%H%M%OS")
     
     fileName <- sprintf("%s_%s.csv",
                         humanTime(),
                         digest::digest(data))
     
-    write.csv(x = data, file = file.path(responsesDir, fileName),
-              row.names = FALSE, quote = TRUE)
+    
+    #write.csv(x = data, file = file.path(responsesDir, fileName),
+    #          row.names = FALSE, quote = TRUE)
+    
+    
+    x<-data.frame(data)
+    
+    write_csv(x,paste0("data/",fileName))
+    
   }
   
   # action to take when submit button is pressed
-  observeEvent(input$submit, {
-
-    saveData(formData())
-    shinyjs::reset("form")
-    shinyjs::hide("form")
-    shinyjs::show("thankyou_msg")
-
-  })
+  # observeEvent(input$submit, {
+  # 
+  #   saveData(formData())
+  #   shinyjs::reset("form")
+  #   shinyjs::hide("form")
+  #   shinyjs::show("thankyou_msg")
+  # 
+  # })
   
   # submit another response
   observeEvent(input$submit_another, {
