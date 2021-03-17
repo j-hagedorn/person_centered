@@ -1,0 +1,111 @@
+trigger:
+  - master
+  
+resources:
+  - repo: self
+  
+variables:
+  # Container registry service connection established during pipeline creation
+  
+  #Name of your Azure Container Registry Service Connection that was created 
+  #during the service connection setup in azure pipelines 
+  dockerRegistryServiceConnection: 'TBD-ACR'
+
+  #Name of the Azure Service Connection that was created 
+  #during the service connection setup in azure pipelines
+  rgServiceConnection: 'TBD-RG'  
+
+  #Name of the resource group in your Azure subscription 
+  rgName: 'TBD-SHARED-PROD'
+
+  #Name of the image found in the container repository 
+  imageRepository: 'personcentered'
+  
+  #Name of the container registry that houses the container repository
+  containerRegistry: 'tbdcontainerregistry.azurecr.io'
+
+  #This part should always be the same
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+
+  #The name you gave the webapp when deploying to the app service plan (server)
+  webAppName: 'personal-mdhhs-app'
+
+  #Staging slot. This name could be changed, but has to match the name of the slot 
+  #given in the slot creation of the webapp. When making a staging slot, just call it 'staging'
+  slotname: 'staging'
+
+  tag: '$(Build.BuildId)'
+
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+
+
+# Now the various pipeline stages are written out and will 
+# use the above variables to create the pipeline
+  
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:  
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
+  
+  
+  
+- stage: 'Staging'
+  displayName: 'Deploy to Staging Slot'
+  condition: succeeded()
+  jobs:
+  - job: Deploy
+    displayName: Deploy
+    pool:
+      vmImage: 'Ubuntu-20.04'
+    steps:
+    - task: AzureRmWebAppDeployment@4
+
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: $(rgServiceConnection)
+        appType: 'webAppContainer'
+        WebAppName: $(webAppName)
+        deployToSlotOrASE: true
+        ResourceGroupName: $(rgName)
+        SlotName: $(slotname)
+        DockerNamespace: $(containerRegistry)
+        DockerRepository: $(imageRepository)
+        DockerImageTag: $(tag)
+ 
+        
+- stage: 'Production'
+  displayName: 'Deploy to the production'
+  dependsOn: Staging
+  jobs:
+  - deployment: Deploy
+    pool:
+      vmImage: 'Ubuntu-20.04'
+    environment: prod
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: $(rgServiceConnection)
+              appType: 'webAppContainer'
+              WebAppName: $(webAppName)
+              DockerNamespace: $(containerRegistry)
+              DockerRepository: $(imageRepository)
+              DockerImageTag: $(tag)
