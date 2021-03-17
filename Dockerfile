@@ -33,7 +33,7 @@ RUN R -e 'library("devtools"); install_github("LHaferkamp/httpuv")'
 # Download the desired package(s)
 # R packages needed for Shiny app 
 # (This will hopefully be the only change to the docker file, assuming the folder structure is set up right)
-RUN install2.r tidyverse shiny DT shinythemes DBI odbc pool reactable glue shinyjs shinyWidgets visNetwork digest\
+RUN install2.r tidyverse shiny DT shinythemes DBI odbc pool reactable glue shinyjs shinyWidgets visNetwork digest AzureStor\
     ## clean up
     && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
