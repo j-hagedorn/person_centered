@@ -464,11 +464,13 @@ shinyServer(function(input, output) {
     
     x<-data.frame(data)
     
-    write_csv(x,paste0("data/",fileName))
+   # write_csv(x,paste0("data/",fileName))
+    
+    storage_write_csv(x, cont, fileName)
     
   }
   
-  # action to take when submit button is pressed
+#  action to take when submit button is pressed
   # observeEvent(input$submit, {
   # 
   #   saveData(formData())
