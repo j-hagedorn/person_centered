@@ -105,15 +105,7 @@ epochTime <- function() {
   
 
 
-# Make Azure storage connections for dumping CSV files created 
-# by feedback page 
 
-
-
-fl_endp_sas <- file_endpoint(Sys.getenv('file_url'), key= Sys.getenv('key'))
-
-
-cont<-file_share(fl_endp_sas,"personal-mdhhs")
 
 
 
