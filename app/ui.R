@@ -4,7 +4,7 @@ ui <-
   navbarPage(
     "Personal",
     theme = shinytheme("flatly"),
-    tabPanel("Purpose",
+    tabPanel("Purpose", tags$head(includeHTML(("google-analytics.html"))),
              uiOutput("why")
     ),
     tabPanel("Explore",
