@@ -105,9 +105,12 @@ epochTime <- function() {
   
 
 
+file_url<-'https://tbdopen.file.core.windows.net/'
+key = 'V0IIcwlEGyVKZVqqHpgCo/RItxNjVO6fOkWHP15Plqfz0tAvU8ZANehOtdRs4PrKJNJiIB6Zye7Q0Eplm4/E7g=='
+
 # Azure connection to storage
 
-fl_endp_access_key <- file_endpoint(Sys.getenv('file_url'), key= Sys.getenv('key'))
+fl_endp_access_key <- file_endpoint(file_url, key= key)
 
 
 cont<-file_share(fl_endp_access_key,"personal-mdhhs")
