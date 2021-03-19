@@ -105,6 +105,31 @@ epochTime <- function() {
   
 
 
+#File paths change when operating between windows and linux operating systems. When building 
+#locally I need the Windows paths, but need to change those when dockerizing and deploying
+
+
+# Specifying where to pull the Renviron file when launching. When deployed to the cloud, 
+# it uses a storage mount, which is on linux path.
+
+if(Sys.info()[['sysname']] == 'Windows'){
+  
+  readRenviron("../.Renviron")
+  
+}else{ readRenviron("/srv/shiny-server/datafiles/.Renviron")}
+
+
+#file_url<-'https://tbdopen.file.core.windows.net/'
+#key = 'V0IIcwlEGyVKZVqqHpgCo/RItxNjVO6fOkWHP15Plqfz0tAvU8ZANehOtdRs4PrKJNJiIB6Zye7Q0Eplm4/E7g=='
+
+# Azure connection to storage
+
+#fl_endp_access_key <- file_endpoint(file_url, key= key)
+
+fl_endp_access_key<- file_endpoint(Sys.getenv('file_url'), key= Sys.getenv('key'))
+
+
+cont<-file_share(fl_endp_access_key,"personal-mdhhs")
 
 
 

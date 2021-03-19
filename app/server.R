@@ -521,14 +521,14 @@ shinyServer(function(input, output) {
   }
   
 #  action to take when submit button is pressed
-  # observeEvent(input$submit, {
-  # 
-  #   saveData(formData())
-  #   shinyjs::reset("form")
-  #   shinyjs::hide("form")
-  #   shinyjs::show("thankyou_msg")
-  # 
-  # })
+   observeEvent(input$submit, {
+
+    saveData(formData())
+    shinyjs::reset("form")
+    shinyjs::hide("form")
+    shinyjs::show("thankyou_msg")
+
+  })
   
   # submit another response
   observeEvent(input$submit_another, {
