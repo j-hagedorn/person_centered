@@ -82,7 +82,7 @@ shinyServer(function(input, output) {
         br(),
         textOutput("netText_parent"),
         br(),
-        dataTableOutput("netTbl_child")
+        dataTableOutput("netTbl")
       )
     )
 
@@ -99,7 +99,7 @@ shinyServer(function(input, output) {
             width = 3,
             uiOutput("select_concept"),
             br(),
-            tags$em(textOutput("regText")),
+            # tags$em(textOutput("regText")),
             br()
           ),
           column(
@@ -121,7 +121,10 @@ shinyServer(function(input, output) {
         ),
         column(
           width = 12,
-          reactableOutput("regTbl")
+          downloadButton('downloadData', 'Download Data'),
+          br(),
+          br(),
+          reactableOutput("reqTbl")
         )
       )
     
@@ -140,8 +143,9 @@ shinyServer(function(input, output) {
             identfying areas that require improvement and determining whether the
             intended goals and objectives have been achieved."),
         p("The table below is an inventory of CMS measures related to
-            planning. They includes measures within the following key phrases: 
-            care plan, plan of care, safety plan, and follow-up plan.")
+            planning and decision making. It includes measures with the 
+            following key phrases: care plan, plan of care, safety plan, follow-up plan,
+            shared decision, and personal priorities.")
       ),
       column(
         width = 12,
@@ -226,14 +230,19 @@ shinyServer(function(input, output) {
     vis.nodes$label <- vis.nodes$concept
     vis.nodes$title <- vis.nodes$concept_definition
     vis.nodes$size  <- vis.nodes$rn
-    vis.nodes$color <- "teal"
-    
+    # vis.nodes$color <- "teal"
+
     vis.edges <- pcp_edges
     
     visNetwork(
       nodes = vis.nodes, 
       edges = vis.edges
-    ) %>%
+      ) %>%
+      visNodes(color = list(background = "teal", border = "teal", highlight = 'orange')) %>%
+      visEvents(click="function(nodes){
+                Shiny.onInputChange('current_node_id',
+                nodes);
+      }") %>%
       visOptions(
         highlightNearest = T,
         nodesIdSelection = list(enabled = T),
@@ -315,7 +324,7 @@ shinyServer(function(input, output) {
 
     } else if(input$netVis_selected > 1) {
       
-      text <- paste0("The selected concept ", parent$selected," is a subset of of the broader construct ", 
+      text <- paste0("The selected concept ", parent$selected," is a subset of the broader construct ", 
                      parent$related,". This relationship illustrates that ",parent$selected, 
                      " is one aspect of ", parent$related,".")
       
@@ -330,24 +339,41 @@ shinyServer(function(input, output) {
   })
   
 
-  output$netTbl_child <- renderDataTable({
+  output$netTbl <- renderDataTable({
     
-    pcp_edges %>%
+    to <- pcp_edges %>%
       filter(from %in% input$netVis_selected) %>%
       select(to_concept, from_concept) %>%
       rename(
         selected = from_concept,
         related = to_concept
       ) %>%
+      mutate(relationship = 'Child') %>%
       left_join(pcp_nodes %>%
                   select(concept, concept_definition), 
                 by = c("related" = "concept")
+      )
+    
+    from <- pcp_edges %>%
+      filter(to %in% input$netVis_selected) %>%
+      select(to_concept, from_concept) %>%
+      rename(
+        selected = to_concept,
+        related = from_concept
       ) %>%
-      select(selected, related, concept_definition) %>%
+      mutate(relationship = 'Parent') %>%
+      left_join(pcp_nodes %>%
+                  select(concept, concept_definition), 
+                by = c("selected" = "concept")
+      )
+    
+    from %>%
+      rbind(to) %>%
+      select(selected, related, relationship, concept_definition) %>%
       datatable(
         rownames = F,
         caption = "Aspect(s) of the selected concept",
-        colnames = c("Selected concept", "Related concept(s)", "Related concept defintion(s)"),
+        colnames = c("Selected concept", "Related concept(s)","Relationship","Related concept defintion(s)"),
         options = list(
           searching = F,
           bLengthChange = F,
@@ -367,12 +393,15 @@ shinyServer(function(input, output) {
       "select_concept",
       label = "Select a concept:",
       choices = unique(reqs$concept),
-      selected = "Adjust Plan"
+      selected = unique(reqs$concept),
+      multiple = TRUE
     )
     
   })
   
   output$regText <- renderText({
+    
+    if(input$select_concept == unique(reqs$concept))
     
     concept <- pcp_nodes %>%
       filter(concept %in% input$select_concept) %>%
@@ -385,27 +414,48 @@ shinyServer(function(input, output) {
     
   })
   
-  output$regTbl <- renderReactable({
+  output$downloadData <- downloadHandler(
+
+    filename = function() {
+      paste("reqs", Sys.Date(),".csv", sep="")
+    },
+    content = function(file) {
+      write.csv(reqReactive(), file)
+    }
+
+  )
+  
+  reqReactive <- reactive({
     
-    reqs %>%
+   reqs %>%
       filter(concept %in% input$select_concept) %>%
-      select(-concept) %>%
-      rename(Requirement = requirement) %>%
+      select(concept,requirement,title,page,url) %>%
+      rename(
+        Concept = concept,
+        Requirement = requirement
+      )
+      
+    
+  })
+  
+  output$reqTbl <- renderReactable({
+    
+    reqReactive() %>%
+      select(-url) %>%
       reactable(filterable = TRUE,
                 defaultPageSize = 10,
-                groupBy = c("Requirement"),
+                groupBy = c("Concept","Requirement"),
                 columns = list(
                   title = colDef(
-                    header = "Document Title"
+                    header = "Document Title",
+                    html = TRUE,
+                    cell = function(value, index){
+                      sprintf('<a href="%s" target="_blank">%s</a>', reqReactive()$url[index], value)
+                    }
                   ),
                   page = colDef(
                     header = "Starts on Page..."
-                  ),
-                  url = colDef(
-                    header = "Document Link",
-                    cell = function(value) {
-                    htmltools::tags$a(href = value, target = "_blank", value)
-                  })
+                  )
                 )
       )
     
@@ -417,7 +467,7 @@ shinyServer(function(input, output) {
   output$cmsTbl <- renderDataTable({
     
     domain_qm_bhdda %>%
-      filter(key_planning == T) %>%
+      filter(key_planning == T | key_decision == T) %>%
       select(cmit_id, nqf_id, measure_title, measure_description) %>%
       datatable(
         rownames = F,
