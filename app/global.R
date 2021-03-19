@@ -105,6 +105,12 @@ epochTime <- function() {
   
 
 
+# Azure connection to storage
+
+fl_endp_access_key <- file_endpoint(Sys.getenv('file_url'), key= Sys.getenv('key'))
+
+
+cont<-file_share(fl_endp_access_key,"personal-mdhhs")
 
 
 
