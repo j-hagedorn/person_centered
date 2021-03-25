@@ -8,19 +8,58 @@ shinyServer(function(input, output) {
 
       fluidRow(
         tags$img(
-          src = "retrosupply-jLwVAUtLOAQ-unsplash.jpg",
+          src = "photo-1465343161283-c1959138ddaa.jpg",
           width = "100%", style = 'position:absolute;margin-top: -21px'
         ),
         tags$head(
-          tags$style(HTML('#why_blank {opacity: 0}; #why_main {opacity: .85}'))
+          # includeHTML(("google-analytics.html")),
+          # Note the wrapping of the string in HTML()
+          tags$style(HTML("
+                          @import url('//fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,600,700,800');
+                          body {
+                          background-color: white;
+                          color: black; /* text color */
+                          }
+                          
+                          .navbar { 
+                          background-color: #008080;
+                          color: #000000;
+                          }
+
+                          /* Change header text to imported font */
+                          h2 {
+                          font-family: 'Montserrat', sans-serif;
+                          font-weight:bold;
+                          }
+                          
+                          h4 {
+                          font-family: 'Montserrat', sans-serif;
+                          font-weight:bold;
+                          color: black;
+                          }
+                          
+                          p {
+                          font-family: 'Montserrat', sans-serif;
+                          }
+                          
+                          li {
+                          font-family: 'Montserrat', sans-serif;
+                          }
+                          
+                          em {
+                          font-family: 'Montserrat', sans-serif;
+                          }
+                          
+                          /* Make text visible on inputs */
+                          .shiny-input-container {
+                          color: #474747;
+                          }"
+                          )
+                      )
         ),
         sidebarPanel(
-          id = "why_blank", width = 9,
-        ),
-        sidebarPanel(
-          id = "why_main", width = 3,
-          h3("Person Centered Practices"),
-          br(),
+          id = "why_blank", width = 6,
+          h2("Person Centered Practices"),
           p("An approach to care that consciously adopts the perspectives of
           individuals, families and communities, and sees them as participants
           as well as beneficiaries of trusted health systems that respond to their
@@ -29,11 +68,8 @@ shinyServer(function(input, output) {
           br(),
           p("The various sections of this application can be used to: "),
           tags$li(strong(em("Explore"))," concepts related to person-centered planning and their relationships to one another"),
-          br(),
           tags$li("Review a collection of state and federal requirements to ", strong(em("inform"))," training"),
-          br(),
           tags$li("Identify and implement measurable outcomes to ensure ",strong(em("quality")), "and consistency"),
-          br(),
           br()
         )
       )
@@ -50,8 +86,7 @@ shinyServer(function(input, output) {
         width = 12,
         column(
           width = 3,
-          strong(em("Developing a common language")),
-          br(),
+          h4(em("Developing a common language")),
           br(),
           p("Language is one of our primary means of communication and interaction,
           which emphasizes the importance of using consistent terminology."),
@@ -65,7 +100,8 @@ shinyServer(function(input, output) {
           The size of the circle is relative to the number of documents, or regulations,
           that particular a concept is mapped to."),
           p("Total # of concepts: ",length(unique(pcp_nodes$concept_name))),
-          p("Total # of documents: ",length(unique(corpus_concepts$doc_id)))
+          p("Total # of documents: ",length(unique(corpus_concepts$doc_id))),
+          br()
         ),
         column(
           width = 9,
@@ -76,11 +112,13 @@ shinyServer(function(input, output) {
       column(
         width = 12,
         tags$head(tags$style("
-                  #conceptText * {display: inline;}")),
+                  #conceptText * {display: inline; font-family: 'Montserrat', sans-serif;} 
+                             ")),
         div(id="conceptText",textOutput("netConcept"), tags$b(textOutput("conceptText")),paste0(".")),
         tags$em(textOutput("defintionText")),
         br(),
         textOutput("netText_parent"),
+        tags$head(tags$style("#netText_parent{font-family: 'Montserrat', sans-serif;}")),
         br(),
         dataTableOutput("netTbl")
       )
@@ -104,8 +142,7 @@ shinyServer(function(input, output) {
           ),
           column(
             width = 9,
-            strong(em("Exploring relevant policies and regulations")),
-            br(),
+            h4(em("Exploring relevant policies and regulations")),
             br(),
             p("The taxonomy of concepts being used to develop a common language around
             the person-centered planning process were mapped to both state and federal
@@ -137,7 +174,7 @@ shinyServer(function(input, output) {
     fluidRow(
       column(
         width = 6,
-        strong(em("Measuring success")),
+        h4(em("Measuring success")),
         p(),
         p("Creating valid and reliable methods of evaluation is crucial in
             identfying areas that require improvement and determining whether the
@@ -194,7 +231,7 @@ shinyServer(function(input, output) {
   
   output$url <- renderUI({
     
-    tagList("- World Health Organization:", url)
+    tagList(tags$p("- World Health Organization:", url))
     
   })
   
@@ -378,7 +415,11 @@ shinyServer(function(input, output) {
           searching = F,
           bLengthChange = F,
           info = F,
-          bPaginate = F
+          bPaginate = F,
+          initComplete = JS(
+            "function(settings, json) {",
+            "$('body').css({'font-family': 'Montserrat'});","}"
+            )
         )
         
       )
@@ -472,12 +513,16 @@ shinyServer(function(input, output) {
       datatable(
         rownames = F,
         caption = "CMS Measures Inventory",
-        colnames = c("CMIT Ref No", "NQF ID", "Measure Title", "Measure Description")
-        # options = list(
+        colnames = c("CMIT Ref No", "NQF ID", "Measure Title", "Measure Description"),
+        options = list(
+        initComplete = JS(
+          "function(settings, json) {",
+          "$('body').css({'font-family': 'Montserrat'});","}"
+          )
         #   searching = F,
         #   bLengthChange = F,
         #   info = F
-        # )
+        )
       )
     
   })
