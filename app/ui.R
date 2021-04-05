@@ -2,7 +2,7 @@
 
 ui <- 
   navbarPage(
-    h4("Personal"),
+    title = h4("Personal"), windowTitle = "Personal",
     tabPanel(h4("Purpose"),
                 tags$head(includeHTML(("google-analytics.html"))),
                 uiOutput("why")
