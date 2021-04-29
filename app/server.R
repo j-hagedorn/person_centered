@@ -12,7 +12,7 @@ shinyServer(function(input, output) {
           width = "100%", style = 'position:absolute;margin-top: -21px'
         ),
         tags$head(
-          # includeHTML(("google-analytics.html")),
+           includeHTML(("google-analytics.html")),
           # Note the wrapping of the string in HTML()
           tags$style(HTML("
                           @import url('//fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,600,700,800');
@@ -57,8 +57,14 @@ shinyServer(function(input, output) {
                           )
                       )
         ),
+        fixedRow(
+          column(12,
+                 tags$head(
+                   tags$style(HTML('#why_side {opacity: 0.90} #why_main {opacity: 1}'))
+                 ))),
         sidebarPanel(
-          id = "why_blank", width = 6,
+          id = "why_main",
+          width = 6,
           h2("Person Centered Practices"),
           p("An approach to care that consciously adopts the perspectives of
           individuals, families and communities, and sees them as participants
