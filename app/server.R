@@ -126,7 +126,9 @@ shinyServer(function(input, output) {
         textOutput("netText_parent"),
         tags$head(tags$style("#netText_parent{font-family: 'Montserrat', sans-serif;}")),
         br(),
-        dataTableOutput("netTbl")
+        dataTableOutput("netTbl"),
+        br(),
+        dataTableOutput("umlsTbl")
       )
     )
 
@@ -214,7 +216,7 @@ shinyServer(function(input, output) {
           textInput("org", "Organization"),
           textInput("email", "Email Address"),
           selectInput("page", "My feedback is related to the following section:",
-                      c("","Explore",  "Inform", "Quality")),
+                      c("","Purpose","Explore",  "Inform", "Quality")),
           textAreaInput("text", "Feedback"),
           actionButton("submit", "Submit", class = "btn-primary")
         ),
@@ -407,7 +409,7 @@ shinyServer(function(input, output) {
       mutate(relationship = 'Parent') %>%
       left_join(pcp_nodes %>%
                   select(concept, concept_definition), 
-                by = c("selected" = "concept")
+                by = c("related" = "concept")
       )
     
     from %>%
@@ -426,6 +428,30 @@ shinyServer(function(input, output) {
             "function(settings, json) {",
             "$('body').css({'font-family': 'Montserrat'});","}"
             )
+        )
+        
+      )
+    
+  })
+  
+  output$umlsTbl <- renderDataTable({
+    
+    umls %>%
+      filter(id %in% input$netVis_selected) %>%
+      select(ui, rootSource, name) %>%
+      datatable(
+        rownames = F,
+        caption = "Mapping to Related UMLS Concept(s)",
+        colnames = c("ID", "Source","Name"),
+        options = list(
+          searching = F,
+          bLengthChange = F,
+          info = F,
+          bPaginate = F,
+          initComplete = JS(
+            "function(settings, json) {",
+            "$('body').css({'font-family': 'Montserrat'});","}"
+          )
         )
         
       )

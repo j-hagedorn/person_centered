@@ -11,3 +11,5 @@ images/dedication.lyx
 *.feather
 #*.xlsx
 *.Renviron
+
+*.vsdx

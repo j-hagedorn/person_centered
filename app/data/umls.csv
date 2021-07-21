@@ -1,0 +1,41 @@
+ui,rootSource,uri,name,concept
+MTHU015736,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU015736,Discuss patient's strengths and resources,discuss_strengths
+MTHU010650,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU010650,"Discuss topics of interest to patient with a pleasant, calm approach",discuss_strengths
+MTHU011847,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU011847,"Encourage the individual to identify own goals, not those he/she believes the health care provider expects",discuss_strengths
+Ua1LR,RCD,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/RCD/Ua1LR,Identifying goals,identify_goals
+225294001,SNOMEDCT_US,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/SNOMEDCT_US/225294001,Identifying goals,identify_goals
+713578002,SNOMEDCT_US,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/SNOMEDCT_US/713578002,Identifying personal goals,identify_goals
+MTHU001016,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU001016,"Assist the patient in identifying realistic, attainable goals",identify_goals
+MTHU011855,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU011855,"Assist the individual in identifying realistic, attainable goals",identify_goals
+MTHU014371,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU014371,Assist the patient in identifying appropriate short-term and long-term goals,identify_goals
+MTHU017307,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU017307,Assist the individual in identifying appropriate short-term and long-term goals,identify_goals
+MTHU011865,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU011865,Avoid focusing on diagnosis or disease process alone when assisting the individual in identifying goals,identify_goals
+MTHU017309,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU017309,"Assist the individual in identifying present circumstances in the environment, which may interfere with the achievement of goals",identify_goals
+MTHU004269,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU004269,Identify with patient the goals of care,identify_goals
+MTHU011863,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU011863,Identify with individual the goals of care,identify_goals
+MTHU011847,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU011847,"Encourage the individual to identify own goals, not those he/she believes the health care provider expects",identify_goals
+713578002,SNOMEDCT_US,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/SNOMEDCT_US/713578002,Identifying personal goals,identify_goals
+MTHU001007,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU001007,Assist the patient in identifying a specific goal for change,identify_goals
+MTHU001016,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU001016,"Assist the patient in identifying realistic, attainable goals",identify_goals
+MTHU014371,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU014371,Assist the patient in identifying appropriate short-term and long-term goals,identify_goals
+MTHU017307,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU017307,Assist the individual in identifying appropriate short-term and long-term goals,identify_goals
+MTHU001021,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU001021,Assist the patient in prioritizing (weighting) identified goals,prioritize_goals
+MTHU015341,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU015341,Identify family members' capabilities for involvement in care of the patient,identify_capability
+MTHU004139,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU004139,Identify learning objectives necessary to reach goals,identify_capability
+MTHU001017,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU001017,Assist the patient in identifying target behaviors that need to change to achieve the desired goal,identify_capability
+MTHU011843,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU011843,Assist the individual in identifying methods of overcoming environmental circumstances that may interfere with goal achievement,identify_capability
+MTHU017309,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU017309,"Assist the individual in identifying present circumstances in the environment, which may interfere with the achievement of goals",identify_capability
+MTHU015750,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU015750,Assist the individual to identify strategies to attain goals,identify_opportunity
+MTHU018396,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU018396,"Identify specific activities for each goal, including naming of appropriate participants",identify_opportunity
+MTHU001022,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU001022,Assist the patient in prioritizing activities used for goal achievement,identify_opportunity
+MTHU001008,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU001008,"Assist the patient in identifying a specific measurement indicator (e.g., behavior, social event) for each goal",refine_goals
+300216,NOC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NOC/300216,Personal preferences considered,preferences
+301607,NOC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NOC/301607,Personal preferences considered,preferences
+300805,NOC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NOC/300805,Personal preferences for care considered,preferences
+301522,NOC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NOC/301522,Personal preferences considered in care plan,preferences
+300302,NOC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NOC/300302,Personal preferences included in care plan,preferences
+300805,NOC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NOC/300805,Personal preferences for care considered,preferences
+301522,NOC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NOC/301522,Personal preferences considered in care plan,preferences
+301522,NOC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NOC/301522,Personal preferences considered in care plan,preferences
+201512,NOC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NOC/201512,Identifies personal health care preferences,preferences
+MTHU015619,NIC,https://uts-ws.nlm.nih.gov/rest/content/2021AA/source/NIC/MTHU015619,Establish realistic functional goals with a plan to achieve these,plans_to_achieve
