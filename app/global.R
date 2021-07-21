@@ -23,6 +23,8 @@ reqs <- read_csv("data/reqs.csv")
 
 domain_qm_bhdda <- read_csv("data/domain_qm_bhdda.csv")
 
+umls <- read_csv("data/umls.csv")
+
 # create id column for nodes and format concept names
 
 pcp_nodes <- pcp_nodes %>%
@@ -37,6 +39,9 @@ pcp_nodes <- pcp_nodes %>%
       concept == "Pcp Process"      ~ "PCP Process",
       concept == "Describe Pcp"     ~ "Describe PCP",
       concept == "Pcp Meeting"      ~ "PCP Meeting",
+      concept == "Ipos Development" ~ "IPOS Development",
+      concept == "Endorse Ipos"     ~ "Endorse IPOS",
+      concept == "Cm Signed"        ~ "CM Signed",
       TRUE                          ~ concept
     )
   )
@@ -65,6 +70,9 @@ pcp_edges <- pcp_edges %>%
       to_concept == "Pcp Process"      ~ "PCP Process",
       to_concept == "Describe Pcp"     ~ "Describe PCP",
       to_concept == "Pcp Meeting"      ~ "PCP Meeting",
+      to_concept == "Ipos Development" ~ "IPOS Development",
+      to_concept == "Endorse Ipos"     ~ "Endorse IPOS",
+      to_concept == "Cm Signed"        ~ "CM Signed",
       TRUE                             ~ to_concept
     ),
     from_concept = case_when(
@@ -72,6 +80,9 @@ pcp_edges <- pcp_edges %>%
       from_concept == "Pcp Process"      ~ "PCP Process",
       from_concept == "Describe Pcp"     ~ "Describe PCP",
       from_concept == "Pcp Meeting"      ~ "PCP Meeting",
+      from_concept == "Ipos Development" ~ "IPOS Development",
+      from_concept == "Endorse Ipos"     ~ "Endorse IPOS",
+      from_concept == "Cm Signed"        ~ "CM Signed",
       TRUE                               ~ from_concept
     )
   )
@@ -79,7 +90,6 @@ pcp_edges <- pcp_edges %>%
 # format concept names in reqs
 reqs <- reqs %>%
   mutate(
-    # format concept names displayed in application
     concept = gsub("_"," ", concept),
     concept = gsub("(^|[[:space:]])([[:alpha:]])", "\\1\\U\\2", concept, perl = TRUE),
     concept = case_when(
@@ -87,6 +97,29 @@ reqs <- reqs %>%
       concept == "Pcp Process"      ~ "PCP Process",
       concept == "Describe Pcp"     ~ "Describe PCP",
       concept == "Pcp Meeting"      ~ "PCP Meeting",
+      concept == "Ipos Development" ~ "IPOS Development",
+      concept == "Endorse Ipos"     ~ "Endorse IPOS",
+      concept == "Cm Signed"        ~ "CM Signed",
+      TRUE                          ~ concept
+    )
+  )
+
+# format concept names in umls
+umls <- umls %>%
+  left_join(pcp_nodes %>% select(id,concept_name),
+            by = c("concept" = "concept_name")
+  ) %>%
+  mutate(
+    concept = gsub("_"," ", concept),
+    concept = gsub("(^|[[:space:]])([[:alpha:]])", "\\1\\U\\2", concept, perl = TRUE),
+    concept = case_when(
+      concept == "Pcp Facilitation" ~ "PCP Facilitation",
+      concept == "Pcp Process"      ~ "PCP Process",
+      concept == "Describe Pcp"     ~ "Describe PCP",
+      concept == "Pcp Meeting"      ~ "PCP Meeting",
+      concept == "Ipos Development" ~ "IPOS Development",
+      concept == "Endorse Ipos"     ~ "Endorse IPOS",
+      concept == "Cm Signed"        ~ "CM Signed",
       TRUE                          ~ concept
     )
   )
